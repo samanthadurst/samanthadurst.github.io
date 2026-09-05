@@ -1,8 +1,3 @@
-Here is the updated single-page web code styled after Badri's portfolio layout, complete with your real contact information, full content, interactive tabs, working smooth-scroll navigation links, and integrated grey-azure and grey-orange color palette.
-
-### Updated Code (`index.html`)
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,34 +5,29 @@ Here is the updated single-page web code styled after Badri's portfolio layout, 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Samantha Durst | Portfolio</title>
 
-  <!-- Google Fonts matching Badri's clean editorial aesthetic -->
+  <!-- Google Fonts matching Badri's aesthetic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
   <style>
-    /* COLOR PALETTE & VARIABLES */
+    /* DESIGN SYSTEM & COLORS */
     :root {
-      /* Base & Typography Colors */
-      --bg-dark: #12181C;
-      --bg-light: #FAF9F6;
-      --bg-card: #FFFFFF;
-      --text-dark: #1A232A;
-      --text-muted: #52606D;
-      --text-light: #F1F5F9;
-
-      /* User Requested Accent Tones */
-      --color-grey-azure: #A4B4BF;
-      --color-grey-azure-dark: #586B77;
-      --color-grey-azure-subtle: #EBF0F3;
+      --bg-white: #FFFFFF;
+      --bg-azure-pastel: #A7C4D8;
+      --bg-orange-pastel: #DBC7AB;
       
-      --color-grey-orange: #B4A99A;
-      --color-grey-orange-dark: #807363;
-      --color-grey-orange-subtle: #F5F3EF;
+      /* Subtle cohesive blends for seamless scrolling */
+      --azure-subtle: rgba(167, 196, 216, 0.12);
+      --orange-subtle: rgba(219, 199, 171, 0.12);
+      --border-subtle: rgba(0, 0, 0, 0.08);
 
-      /* Typography */
-      --font-serif: 'Newsreader', Georgia, serif;
-      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --text-dark: #111111;
+      --text-muted: #666666;
+      --text-light: #888888;
+
+      --font-serif: 'Playfair Display', Georgia, serif;
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
     }
 
     * {
@@ -53,14 +43,27 @@ Here is the updated single-page web code styled after Badri's portfolio layout, 
     body {
       font-family: var(--font-sans);
       color: var(--text-dark);
-      background-color: var(--bg-light);
+      background-color: var(--bg-white);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     a {
       color: inherit;
       text-decoration: none;
+    }
+
+    /* SCROLL ANIMATIONS */
+    .fade-in-up {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-in-up.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
 
     /* NAVIGATION */
@@ -72,100 +75,75 @@ Here is the updated single-page web code styled after Badri's portfolio layout, 
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 1.25rem 4rem;
-      background: rgba(18, 24, 28, 0.95);
-      color: var(--text-light);
+      padding: 1.5rem 4rem;
+      background: rgba(255, 255, 255, 0.92);
       z-index: 1000;
-      backdrop-filter: blur(10px);
-      border-bottom: 2px solid var(--color-grey-orange);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--border-subtle);
     }
 
     .nav-logo {
-      font-family: var(--font-serif);
-      font-size: 1.4rem;
-      font-weight: 500;
-      letter-spacing: -0.02em;
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
       list-style: none;
-      gap: 2.5rem;
+      gap: 3rem;
     }
 
     .nav-links a {
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.08em;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--color-grey-azure);
+      color: var(--text-muted);
       transition: color 0.2s ease;
     }
 
     .nav-links a:hover {
-      color: var(--color-grey-orange);
+      color: var(--text-dark);
     }
 
-    /* SECTION 1: HERO / TITLE SLIDE */
+    /* HERO SECTION */
     .hero-section {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      padding: 8rem 8% 4rem;
-      background: var(--bg-dark);
-      color: var(--text-light);
-      gap: 5rem;
-    }
-
-    .hero-image-frame {
-      flex: 1;
-      max-width: 380px;
-      height: 480px;
-      border: 3px solid var(--color-grey-orange);
-      border-radius: 6px;
-      background: rgba(180, 169, 154, 0.08);
+      min-height: 80vh;
       display: flex;
       flex-direction: column;
-      align-items: center;
       justify-content: center;
-      color: var(--color-grey-azure);
+      align-items: center;
       text-align: center;
-      padding: 1.5rem;
+      padding: 10rem 2rem 4rem;
+      background: linear-gradient(180deg, var(--bg-white) 0%, var(--azure-subtle) 100%);
     }
 
-    .hero-content {
-      flex: 1.5;
-    }
-
-    .hero-content h1 {
+    .hero-title {
       font-family: var(--font-serif);
-      font-size: 4.2rem;
+      font-size: 4.5rem;
       font-weight: 400;
-      line-height: 1.05;
+      font-style: italic;
+      line-height: 1.1;
       margin-bottom: 1rem;
-      color: #FFFFFF;
     }
 
     .hero-subtitle {
-      font-size: 1.25rem;
-      color: var(--color-grey-azure);
-      margin-bottom: 2rem;
-      font-weight: 300;
+      font-size: 1rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      max-width: 600px;
     }
 
-    .hero-contact-quick {
-      display: flex;
-      gap: 1.5rem;
-      font-size: 0.9rem;
-      color: var(--color-grey-orange);
-    }
-
-    /* SECTION 2: ABOUT & EDUCATION (Sticky Left / Scrolling Right Layout) */
+    /* ABOUT, EDUCATION & PUBLICATIONS (SPLIT LAYOUT) */
     .split-section {
       display: flex;
       position: relative;
-      background: #FFFFFF;
-      border-bottom: 1px solid var(--color-grey-azure-subtle);
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-subtle);
     }
 
     .left-sticky-panel {
@@ -176,28 +154,29 @@ Here is the updated single-page web code styled after Badri's portfolio layout, 
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--color-grey-orange-subtle);
+      background: var(--orange-subtle);
       padding: 3rem;
-      border-right: 1px solid rgba(180, 169, 154, 0.3);
+      border-right: 1px solid var(--border-subtle);
     }
 
     .sticky-photo-frame {
       width: 85%;
       height: 75%;
-      border: 2px dashed var(--color-grey-orange-dark);
-      background: #FFFFFF;
+      background: #EAEAEA;
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 6px;
-      color: var(--text-muted);
+      color: var(--text-light);
+      font-size: 0.85rem;
+      letter-spacing: 0.05em;
       text-align: center;
       padding: 1.5rem;
+      border-radius: 2px;
     }
 
     .right-scroll-panel {
       flex: 1.3;
-      padding: 7rem 5rem;
+      padding: 6rem 5rem;
     }
 
     .scroll-block {
@@ -205,307 +184,313 @@ Here is the updated single-page web code styled after Badri's portfolio layout, 
     }
 
     .section-label {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       font-weight: 600;
-      letter-spacing: 0.15em;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--color-grey-azure-dark);
-      margin-bottom: 1.25rem;
-      display: inline-block;
-      border-bottom: 2px solid var(--color-grey-orange);
-      padding-bottom: 0.2rem;
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      display: block;
     }
 
     .bio-text {
       font-size: 1.15rem;
       color: var(--text-dark);
       line-height: 1.85;
-      font-weight: 400;
+      font-weight: 300;
     }
 
-    .edu-card {
-      background: var(--color-grey-azure-subtle);
-      padding: 2rem;
-      border-radius: 6px;
-      border-left: 4px solid var(--color-grey-azure-dark);
+    .edu-item, .pub-item {
+      margin-bottom: 2.5rem;
     }
 
-    .edu-card h3 {
+    .edu-title, .pub-title {
       font-family: var(--font-serif);
-      font-size: 1.8rem;
-      color: var(--text-dark);
-      font-weight: 500;
-      margin-bottom: 0.3rem;
-    }
-
-    .edu-degree {
-      font-weight: 600;
-      color: var(--color-grey-orange-dark);
-      margin-bottom: 0.75rem;
-    }
-
-    .edu-details {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-    }
-
-    /* SECTION 3: PUBLICATIONS */
-    .publications-section {
-      padding: 7rem 8%;
-      background: var(--bg-light);
-      border-bottom: 1px solid var(--color-grey-azure-subtle);
-    }
-
-    .pub-card {
-      background: #FFFFFF;
-      border-radius: 6px;
-      padding: 2.5rem;
-      border: 1px solid rgba(164, 180, 191, 0.4);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 2rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.02);
-    }
-
-    .pub-info h3 {
-      font-family: var(--font-serif);
-      font-size: 1.8rem;
-      color: var(--text-dark);
-      margin-bottom: 0.5rem;
-    }
-
-    .pub-info p {
-      color: var(--text-muted);
-      max-width: 650px;
-    }
-
-    .btn-pub {
-      display: inline-block;
-      padding: 0.85rem 1.75rem;
-      background: var(--color-grey-azure-dark);
-      color: #FFFFFF;
-      font-weight: 600;
-      font-size: 0.85rem;
-      letter-spacing: 0.05em;
-      border-radius: 4px;
-      transition: background 0.2s ease;
-      white-space: nowrap;
-    }
-
-    .btn-pub:hover {
-      background: var(--text-dark);
-    }
-
-    /* SECTION 4: THINGS I'VE WORKED ON (Tabbed Experience) */
-    .worked-section {
-      padding: 7rem 8%;
-      background: var(--color-grey-azure-subtle);
-      border-bottom: 1px solid rgba(164, 180, 191, 0.3);
-    }
-
-    .section-header-center {
-      text-align: center;
-      margin-bottom: 3.5rem;
-    }
-
-    .section-header-center h2 {
-      font-family: var(--font-serif);
-      font-size: 3rem;
-      font-weight: 400;
-      color: var(--text-dark);
-    }
-
-    /* Tab Controls */
-    .tab-bar {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-bottom: 3rem;
-      flex-wrap: wrap;
-    }
-
-    .tab-btn {
-      padding: 0.9rem 1.8rem;
-      border: 2px solid var(--color-grey-azure);
-      background: #FFFFFF;
-      color: var(--text-dark);
-      font-family: var(--font-sans);
-      font-size: 0.9rem;
-      font-weight: 600;
-      cursor: pointer;
-      border-radius: 4px;
-      transition: all 0.25s ease;
-    }
-
-    .tab-btn.active, .tab-btn:hover {
-      background: var(--color-grey-orange);
-      border-color: var(--color-grey-orange-dark);
-      color: #FFFFFF;
-    }
-
-    /* Tab Panels */
-    .tab-panel {
-      display: none;
-      background: #FFFFFF;
-      padding: 3.5rem;
-      border-radius: 6px;
-      border-top: 4px solid var(--color-grey-orange);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
-    }
-
-    .tab-panel.active {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 3.5rem;
-    }
-
-    .panel-photo-frame {
-      height: 360px;
-      border: 2px dashed var(--color-grey-azure-dark);
-      background: var(--color-grey-orange-subtle);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 6px;
-      color: var(--text-muted);
-      text-align: center;
-      padding: 1.5rem;
-    }
-
-    .panel-body h3 {
-      font-family: var(--font-serif);
-      font-size: 2.2rem;
+      font-size: 1.6rem;
+      font-style: italic;
       color: var(--text-dark);
       margin-bottom: 0.25rem;
     }
 
-    .panel-role {
-      font-weight: 600;
-      color: var(--color-grey-orange-dark);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+    .edu-sub, .pub-sub {
       font-size: 0.85rem;
-      margin-bottom: 1.5rem;
+      color: var(--text-muted);
+      margin-bottom: 0.75rem;
     }
 
-    .panel-list {
-      list-style-type: square;
-      padding-left: 1.25rem;
+    .pub-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--bg-azure-pastel);
+      border-bottom: 1px solid var(--bg-azure-pastel);
+      padding-bottom: 2px;
+    }
+
+    /* BADRI'S EXACT EXPERIENCE SECTION LAYOUT */
+    .experience-section {
+      padding: 6rem 8%;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .section-main-title {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+      font-style: italic;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    /* 3 Horizontal Category Header Tabs */
+    .exp-tabs-header {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--border-subtle);
+      border-bottom: 1px solid var(--border-subtle);
+      margin-bottom: 4rem;
+    }
+
+    .exp-tab-item {
+      padding: 1.5rem 1rem;
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      transition: all 0.3s ease;
+      background: transparent;
+    }
+
+    .exp-tab-item.active {
+      border-bottom: 2px solid var(--text-dark);
+      background: var(--azure-subtle);
+    }
+
+    .exp-tab-num {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      margin-bottom: 0.5rem;
+      display: block;
+    }
+
+    .exp-tab-title {
+      font-size: 1.1rem;
+      font-weight: 600;
       color: var(--text-dark);
     }
 
-    .panel-list li {
-      margin-bottom: 0.85rem;
+    /* Active Experience Display Grid */
+    .exp-content-grid {
+      display: none;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .exp-content-grid.active {
+      display: grid;
+    }
+
+    .exp-image-frame {
+      width: 100%;
+      height: 420px;
+      background: #F2F2F2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+
+    .exp-details-block {
+      margin-bottom: 2.5rem;
+    }
+
+    .exp-org-title {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-style: italic;
+      margin-bottom: 0.25rem;
+    }
+
+    .exp-role-meta {
+      font-size: 0.85rem;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+    }
+
+    .exp-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
       line-height: 1.75;
     }
 
-    /* SECTION 5: BEYOND THE CLASSROOM */
-    .beyond-section {
-      padding: 7rem 8%;
-      background: #FFFFFF;
-      border-bottom: 1px solid var(--color-grey-azure-subtle);
+    /* Badri's Circular Number Navigation Below Experience */
+    .exp-circle-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 4rem;
     }
 
-    .grid-3 {
+    .circle-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 1px solid var(--border-subtle);
+      background: #FFFFFF;
+      font-size: 0.85rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.25s ease;
+    }
+
+    .circle-btn.active {
+      background: var(--text-dark);
+      color: #FFFFFF;
+      border-color: var(--text-dark);
+    }
+
+    /* BEYOND THE CLASSROOM SECTION */
+    .beyond-section {
+      padding: 6rem 8%;
+      background: linear-gradient(180deg, var(--bg-white) 0%, var(--orange-subtle) 100%);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .beyond-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .beyond-card-img {
+      width: 100%;
+      height: 320px;
+      background: #EAEAEA;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-light);
+      font-size: 0.85rem;
+    }
+
+    .beyond-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-style: italic;
+      margin-bottom: 0.5rem;
+    }
+
+    .beyond-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    /* THINGS I'VE WORKED ON SECTION */
+    .worked-section {
+      padding: 6rem 8%;
+      background: var(--bg-white);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .worked-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
       margin-top: 3rem;
     }
 
-    .beyond-card {
-      background: var(--bg-light);
-      padding: 2.5rem 2rem;
-      border-radius: 6px;
-      border: 1px solid var(--color-grey-azure-subtle);
-      border-top: 3px solid var(--color-grey-azure);
-      transition: transform 0.2s ease;
+    .worked-card {
+      padding: 2rem;
+      border: 1px solid var(--border-subtle);
+      background: var(--azure-subtle);
+      border-radius: 4px;
     }
 
-    .beyond-card:hover {
-      transform: translateY(-4px);
-    }
-
-    .beyond-card h3 {
+    .worked-card h3 {
       font-family: var(--font-serif);
-      font-size: 1.5rem;
-      color: var(--text-dark);
-      margin-bottom: 1rem;
-    }
-
-    .beyond-card p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      line-height: 1.7;
-    }
-
-    /* SECTION 6: CONTACT */
-    .contact-section {
-      padding: 7rem 8%;
-      background: var(--bg-dark);
-      color: var(--text-light);
-      text-align: center;
-    }
-
-    .contact-section h2 {
-      font-family: var(--font-serif);
-      font-size: 3.5rem;
-      font-weight: 400;
-      margin-bottom: 1rem;
-    }
-
-    .contact-subtitle {
-      color: var(--color-grey-azure);
-      font-size: 1.15rem;
-      margin-bottom: 3rem;
-    }
-
-    .contact-grid {
-      display: flex;
-      justify-content: center;
-      gap: 4rem;
-      flex-wrap: wrap;
-    }
-
-    .contact-item h4 {
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      color: var(--color-grey-orange);
+      font-size: 1.4rem;
+      font-style: italic;
       margin-bottom: 0.5rem;
     }
 
-    .contact-item a, .contact-item p {
-      font-size: 1.1rem;
-      color: #FFFFFF;
+    .worked-card p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
     }
 
-    .contact-item a:hover {
-      color: var(--color-grey-azure);
-      text-decoration: underline;
+    /* GET IN TOUCH / CONTACT SECTION (EXACTLY MATCHING BADRI'S) */
+    .contact-section {
+      padding: 8rem 2rem;
+      text-align: center;
+      background: var(--bg-white);
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .contact-heading {
+      font-family: var(--font-serif);
+      font-size: 3.5rem;
+      font-style: italic;
+      margin-bottom: 2rem;
+    }
+
+    .contact-links-list {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    .contact-tag {
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 0.6rem 1.4rem;
+      border-radius: 20px;
+      background: var(--orange-subtle);
+      border: 1px solid rgba(219, 199, 171, 0.4);
+      transition: background 0.2s ease;
+    }
+
+    .contact-tag:hover {
+      background: var(--bg-orange-pastel);
     }
 
     footer {
-      padding: 2rem 8%;
-      background: #0B0F12;
-      color: var(--text-muted);
-      font-size: 0.85rem;
+      padding: 2rem 4rem;
       display: flex;
       justify-content: space-between;
-      border-top: 1px solid rgba(255,255,255,0.05);
+      font-size: 0.75rem;
+      color: var(--text-light);
+      border-top: 1px solid var(--border-subtle);
     }
 
-    /* RESPONSIVE DESIGN */
-    @media (max-width: 960px) {
+    /* RESPONSIVE BREAKPOINTS */
+    @media (max-width: 900px) {
       nav { padding: 1rem 2rem; }
-      .hero-section { flex-direction: column; padding-top: 7rem; }
       .split-section { flex-direction: column; }
       .left-sticky-panel { height: 300px; position: relative; }
-      .right-scroll-panel { padding: 4rem 2rem; }
-      .tab-panel.active { grid-template-columns: 1fr; }
-      .grid-3 { grid-template-columns: 1fr; }
-      .pub-card { flex-direction: column; align-items: flex-start; }
+      .right-scroll-panel { padding: 3rem 1.5rem; }
+      .exp-tabs-header { grid-template-columns: 1fr; }
+      .exp-content-grid { grid-template-columns: 1fr; }
+      .beyond-grid, .worked-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
@@ -516,206 +501,231 @@ Here is the updated single-page web code styled after Badri's portfolio layout, 
     <div class="nav-logo">Samantha Durst</div>
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
-      <li><a href="#worked-on">Experience</a></li>
+      <li><a href="#experience">Experience</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
   </nav>
 
-  <!-- Title / Hero Section -->
-  <section class="hero-section" id="hero">
-    <div class="hero-image-frame">
-      <p>[ Photo Placeholder: Profile / Headshot Image ]</p>
-    </div>
-    <div class="hero-content">
-      <h1>Samantha Durst</h1>
-      <p class="hero-subtitle">Feature Writer, Digital Storyteller & Community Relations Specialist</p>
-      <div class="hero-contact-quick">
-        <span>📍 Los Angeles, CA</span>
-        <span>✉️ samdurst@g.ucla.edu</span>
-      </div>
-    </div>
+  <!-- Hero Section -->
+  <section class="hero-section fade-in-up">
+    <h1 class="hero-title">Samantha Durst</h1>
+    <p class="hero-subtitle">Feature Writer, Digital Storyteller & Community Relations</p>
   </section>
 
-  <!-- About Me & Education (Sticky Left Photo / Right Scroll Content) -->
+  <!-- About, Education & Publications (Sticky Left / Scrolling Right) -->
   <section class="split-section" id="about">
     <div class="left-sticky-panel">
       <div class="sticky-photo-frame">
-        <p>[ Photo Placeholder: Stationary Portrait / Campus Image ]</p>
+        [ Portrait Photo Placeholder ]
       </div>
     </div>
-    
+
     <div class="right-scroll-panel">
-      <!-- About Block -->
-      <div class="scroll-block">
-        <span class="section-label">About Me</span>
+      <!-- About -->
+      <div class="scroll-block fade-in-up">
+        <span class="section-label">About</span>
         <div class="bio-text">
           <p>I am an undergraduate researcher, feature writer, and digital media storyteller with extensive experience bridging corporate public relations, journalistic reporting, and community-based advocacy. Through my work in communications and community engagement, I focus on bringing clarity, accountability, and depth to human-centered stories.</p>
         </div>
       </div>
 
-      <!-- Education Block -->
-      <div class="scroll-block" id="education">
+      <!-- Education -->
+      <div class="scroll-block fade-in-up">
         <span class="section-label">Education</span>
-        <div class="edu-card">
-          <h3>University of California, Los Angeles (UCLA)</h3>
-          <p class="edu-degree">Bachelor of Arts in English | Minor in Community Engagement & Social Change</p>
-          <div class="edu-details">
-            <p><strong>Expected Graduation:</strong> June 2027 | <strong>GPA:</strong> 3.50</p>
-            <p style="margin-top: 0.5rem;"><strong>Honors & Affiliations:</strong> Changemaker Scholar, Her Campus at UCLA, Bruins Vote Ambassador, Special Olympics Unified Basketball, Reading on the Pitch Volunteer.</p>
-          </div>
+        <div class="edu-item">
+          <h3 class="edu-title">University of California, Los Angeles</h3>
+          <p class="edu-sub">B.A. in English, Minor in Community Engagement & Social Change | June 2027</p>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Changemaker Scholar, Bruins Vote Ambassador, Special Olympics Unified Basketball Volunteer.</p>
+        </div>
+      </div>
+
+      <!-- Publications (Directly Under Education) -->
+      <div class="scroll-block fade-in-up">
+        <span class="section-label">Publications</span>
+        <div class="pub-item">
+          <h3 class="pub-title">Her Campus Media at UCLA</h3>
+          <p class="pub-sub">Author archive covering entertainment, campus lifestyle, and community features.</p>
+          <a href="https://www.hercampus.com/author/samantha-durst/" target="_blank" rel="noopener" class="pub-link">Read Articles →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Publications Section -->
-  <section class="publications-section" id="publications">
-    <span class="section-label">Publications</span>
-    <div class="pub-card" style="margin-top: 1.5rem;">
-      <div class="pub-info">
-        <h3>Her Campus Media at UCLA</h3>
-        <p>Author archive featuring regular journalism pieces, entertainment coverage, lifestyle features, and commentary written for the UCLA student body and broader digital audiences.</p>
+  <!-- Experience Section (Badri's Exact Layout with 3 Categories) -->
+  <section class="experience-section fade-in-up" id="experience">
+    <h2 class="section-main-title">Experience</h2>
+
+    <!-- 3 Numbered Header Tabs -->
+    <div class="exp-tabs-header">
+      <div class="exp-tab-item active" onclick="switchExpTab(0)">
+        <span class="exp-tab-num">01</span>
+        <div class="exp-tab-title">Media & Community Relations</div>
       </div>
-      <a href="https://www.hercampus.com/author/samantha-durst/" target="_blank" rel="noopener" class="btn-pub">View Author Archive →</a>
+      <div class="exp-tab-item" onclick="switchExpTab(1)">
+        <span class="exp-tab-num">02</span>
+        <div class="exp-tab-title">Research & Writing</div>
+      </div>
+      <div class="exp-tab-item" onclick="switchExpTab(2)">
+        <span class="exp-tab-num">03</span>
+        <div class="exp-tab-title">Leadership</div>
+      </div>
+    </div>
+
+    <!-- Active Tab 01 Content -->
+    <div class="exp-content-grid active">
+      <div class="exp-image-frame">[ Media & Community Relations Photo ]</div>
+      <div>
+        <div class="exp-details-block">
+          <h3 class="exp-org-title">BET at Paramount</h3>
+          <p class="exp-role-meta">Corporate Communications & PR Intern | Los Angeles, CA</p>
+          <p class="exp-desc">Supported corporate communications across broadcast announcements, executive memos, and live press activations. Maintained targeted media databases covering leading entertainment and culture publications.</p>
+        </div>
+        <div class="exp-details-block">
+          <h3 class="exp-org-title">We Love Leimert</h3>
+          <p class="exp-role-meta">Digital Storytelling & Archival Intern | Los Angeles, CA</p>
+          <p class="exp-desc">Documented local commercial landmarks and conducted field interviews across Leimert Park to compile oral histories for digital platforms.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Tab 02 Content -->
+    <div class="exp-content-grid">
+      <div class="exp-image-frame">[ Research & Writing Photo ]</div>
+      <div>
+        <div class="exp-details-block">
+          <h3 class="exp-org-title">Her Campus Media</h3>
+          <p class="exp-role-meta">Feature Writer & Journalist | UCLA</p>
+          <p class="exp-desc">Researched and authored published feature articles focusing on campus culture, entertainment media, and student perspectives.</p>
+        </div>
+        <div class="exp-details-block">
+          <h3 class="exp-org-title">Non-Profit Grant Proposals</h3>
+          <p class="exp-role-meta">Grant & Program Copywriter</p>
+          <p class="exp-desc">Authored grant proposals, program descriptions, and evaluation frameworks for international youth literacy and conservation non-profits.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Tab 03 Content -->
+    <div class="exp-content-grid">
+      <div class="exp-image-frame">[ Leadership Photo ]</div>
+      <div>
+        <div class="exp-details-block">
+          <h3 class="exp-org-title">Changeist</h3>
+          <p class="exp-role-meta">Team Leader Mentorship Intern | Los Angeles, CA</p>
+          <p class="exp-desc">Facilitated youth workshops on environmental justice and civic engagement, guiding teams through community service learning projects.</p>
+        </div>
+        <div class="exp-details-block">
+          <h3 class="exp-org-title">Kappa Delta Sorority</h3>
+          <p class="exp-role-meta">Health & Wellness Director | UCLA</p>
+          <p class="exp-desc">Managed community wellness programming and weekly communications for over 300 active collegiate members.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Circular Navigation Buttons Below -->
+    <div class="exp-circle-nav">
+      <button class="circle-btn active" onclick="switchExpTab(0)">01</button>
+      <button class="circle-btn" onclick="switchExpTab(1)">02</button>
+      <button class="circle-btn" onclick="switchExpTab(2)">03</button>
     </div>
   </section>
 
-  <!-- Things I've Worked On Section (Placed directly before Beyond the Classroom) -->
-  <section class="worked-section" id="worked-on">
-    <div class="section-header-center">
-      <span class="section-label">Portfolio Highlights</span>
-      <h2>Things I've Worked On</h2>
-    </div>
-
-    <!-- Interactive Category Navigation Tabs -->
-    <div class="tab-bar">
-      <button class="tab-btn active" onclick="openTab(event, 'tab-media')">Media & Community Relations</button>
-      <button class="tab-btn" onclick="openTab(event, 'tab-research')">Research & Writing</button>
-      <button class="tab-btn" onclick="openTab(event, 'tab-leadership')">Leadership</button>
-    </div>
-
-    <!-- Tab 1: Media & Community Relations -->
-    <div id="tab-media" class="tab-panel active">
-      <div class="panel-photo-frame">
-        <p>[ Photo Placeholder: Press Activation / Media Outreach ]</p>
-      </div>
-      <div class="panel-body">
-        <h3>Media & Community Relations</h3>
-        <p class="panel-role">Corporate Communications & Outreach</p>
-        <ul class="panel-list">
-          <li><strong>BET at Paramount:</strong> Supported Corporate Communications and PR initiatives across broadcast releases, executive media memos, and major press activations.</li>
-          <li><strong>Media List Development:</strong> Constructed targeted press databases spanning key entertainment, lifestyle, and Black media outlets (including <em>Blavity, Ebony, Deadline,</em> and <em>Black Enterprise</em>).</li>
-          <li><strong>We Love Leimert:</strong> Mapped Black-owned businesses and landmarks for a digital community platform while compiling oral histories and conducting interviews across Los Angeles.</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Tab 2: Research & Writing -->
-    <div id="tab-research" class="tab-panel">
-      <div class="panel-photo-frame">
-        <p>[ Photo Placeholder: Writing / Journalism Workspace ]</p>
-      </div>
-      <div class="panel-body">
-        <h3>Research & Writing</h3>
-        <p class="panel-role">Editorial & Archival Reporting</p>
-        <ul class="panel-list">
-          <li><strong>Her Campus Media at UCLA:</strong> Research, pitch, and write weekly feature stories covering university culture, entertainment trends, and student lifestyle.</li>
-          <li><strong>Oral History Archiving:</strong> Authored articles and visual carousels capturing local community narratives and neighborhood change in Leimert Park.</li>
-          <li><strong>Grant & Program Proposals:</strong> Developed program frameworks, evaluation metrics, and non-profit grant proposals for youth literacy and wildlife conservation initiatives.</li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Tab 3: Leadership -->
-    <div id="tab-leadership" class="tab-panel">
-      <div class="panel-photo-frame">
-        <p>[ Photo Placeholder: Youth Facilitation / Workshop ]</p>
-      </div>
-      <div class="panel-body">
-        <h3>Leadership</h3>
-        <p class="panel-role">Civic Mentorship & Student Initiatives</p>
-        <ul class="panel-list">
-          <li><strong>Changeist (Team Leader Intern):</strong> Designed educational guides and facilitated weekly workshops on environmental justice, public health, and civic engagement for youth.</li>
-          <li><strong>Kappa Delta Sorority:</strong> Served as Health & Wellness Director, authoring program proposals and weekly newsletters for an organization of over 300 members.</li>
-          <li><strong>UCLA Changemaker Scholar:</strong> Coordinated hands-on community service projects and authored weekly analytical impact reports detailing youth civic participation.</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <!-- Beyond the Classroom Section -->
-  <section class="beyond-section" id="beyond">
-    <span class="section-label">Interests & Involvement</span>
-    <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-weight: 400; margin-top: 0.5rem;">Beyond the Classroom</h2>
-
-    <div class="grid-3">
+  <!-- Beyond the Classroom (Placed directly under Experience) -->
+  <section class="beyond-section fade-in-up" id="beyond">
+    <span class="section-label" style="text-align: center;">Beyond the Classroom</span>
+    <div class="beyond-grid">
       <div class="beyond-card">
-        <h3>Youth Literacy Advocacy</h3>
-        <p>Volunteering with initiatives like Reading on the Pitch to combine sports, educational equity, and interactive youth engagement programs.</p>
+        <div class="beyond-card-img">[ Community Activity Photo ]</div>
+        <h3>Youth Literacy & Soccer</h3>
+        <p>Combining athletics and educational equity through Reading on the Pitch youth workshops.</p>
       </div>
       <div class="beyond-card">
-        <h3>Civic Engagement</h3>
-        <p>Serving as a Bruins Vote Ambassador to increase voter awareness, civic participation, and accessibility across campus populations.</p>
-      </div>
-      <div class="beyond-card">
+        <div class="beyond-card-img">[ Creative Project Photo ]</div>
         <h3>Creative Writing & Arts</h3>
-        <p>Exploring creative prose, canvas painting, digital storytelling, and multi-layered media production outside of core academic projects.</p>
+        <p>Exploring creative prose, canvas painting, digital storytelling, and media production.</p>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section class="contact-section" id="contact">
-    <h2>Get in Touch</h2>
-    <p class="contact-subtitle">I'm always open to discussing new opportunities, media projects, or community collaborations.</p>
+  <!-- Things I've Worked On (Placed below Beyond the Classroom) -->
+  <section class="worked-section fade-in-up" id="worked-on">
+    <span class="section-label">Projects</span>
+    <h2 style="font-family: var(--font-serif); font-size: 2.5rem; font-style: italic; margin-top: 0.5rem;">Things I've Worked On</h2>
 
-    <div class="contact-grid">
-      <div class="contact-item">
-        <h4>Location</h4>
-        <p>Los Angeles, CA 90024</p>
+    <div class="worked-grid">
+      <div class="worked-card">
+        <h3>Media Pitching Campaign</h3>
+        <p>Developed targeted media pitches and press lists for national broadcast campaigns.</p>
       </div>
-      <div class="contact-item">
-        <h4>Email</h4>
-        <p><a href="mailto:samdurst@g.ucla.edu">samdurst@g.ucla.edu</a></p>
+      <div class="worked-card">
+        <h3>Leimert Park Directory</h3>
+        <p>Compiled commercial landmark directory data for neighborhood storytelling initiatives.</p>
       </div>
-      <div class="contact-item">
-        <h4>Phone</h4>
-        <p><a href="tel:6196695180">(619) 669-5180</a></p>
-      </div>
-      <div class="contact-item">
-        <h4>Articles</h4>
-        <p><a href="https://www.hercampus.com/author/samantha-durst/" target="_blank" rel="noopener">Her Campus Profile</a></p>
+      <div class="worked-card">
+        <h3>Youth Workshop Series</h3>
+        <p>Designed hands-on learning modules on environmental justice and public health.</p>
       </div>
     </div>
+  </section>
+
+  <!-- Get in Touch (Matching Badri's Clean Contact Section) -->
+  <section class="contact-section fade-in-up" id="contact">
+    <span class="contact-label">Contact</span>
+    <h2 class="contact-heading">Get in Touch</h2>
+
+    <ul class="contact-links-list">
+      <li class="contact-tag"><a href="mailto:samdurst@g.ucla.edu">samdurst@g.ucla.edu</a></li>
+      <li class="contact-tag"><a href="tel:6196695180">(619) 669-5180</a></li>
+      <li class="contact-tag">Los Angeles, CA</li>
+      <li class="contact-tag"><a href="https://www.hercampus.com/author/samantha-durst/" target="_blank" rel="noopener">Her Campus Profile</a></li>
+    </ul>
   </section>
 
   <!-- Footer -->
   <footer>
-    <div>© 2026 Samantha Durst. All rights reserved.</div>
-    <div>Styled with Grey Azure & Grey Orange Palette</div>
+    <div>© 2026 Samantha Durst</div>
+    <div>UCLA • Los Angeles</div>
   </footer>
 
-  <!-- JavaScript for Interactive Tabs -->
+  <!-- INTERACTIVE JS FOR TABS AND SCROLL REVEAL ANIMATIONS -->
   <script>
-    function openTab(evt, tabName) {
-      // Hide all tab panels
-      const tabPanels = document.getElementsByClassName("tab-panel");
-      for (let i = 0; i < tabPanels.length; i++) {
-        tabPanels[i].classList.remove("active");
-      }
+    // Tab Switcher Function
+    function switchExpTab(index) {
+      const headerTabs = document.querySelectorAll('.exp-tab-item');
+      const contentGrids = document.querySelectorAll('.exp-content-grid');
+      const circleBtns = document.querySelectorAll('.circle-btn');
 
-      // Deactivate all tab buttons
-      const tabBtns = document.getElementsByClassName("tab-btn");
-      for (let i = 0; i < tabBtns.length; i++) {
-        tabBtns[i].classList.remove("active");
-      }
+      headerTabs.forEach((tab, i) => {
+        tab.classList.toggle('active', i === index);
+      });
 
-      // Show selected tab panel and activate clicked button
-      document.getElementById(tabName).classList.add("active");
-      evt.currentTarget.classList.add("active");
+      contentGrids.forEach((grid, i) => {
+        grid.classList.toggle('active', i === index);
+      });
+
+      circleBtns.forEach((btn, i) => {
+        btn.classList.toggle('active', i === index);
+      });
     }
+
+    // IntersectionObserver for Dynamic Scroll-Reveal Animations
+    document.addEventListener('DOMContentLoaded', () => {
+      const observerOptions = {
+        threshold: 0.15
+      };
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
+        });
+      }, observerOptions);
+
+      document.querySelectorAll('.fade-in-up').forEach(el => {
+        observer.observe(el);
+      });
+    });
   </script>
 </body>
 </html>
-
-```

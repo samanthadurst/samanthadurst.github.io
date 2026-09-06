@@ -5,26 +5,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Samantha Durst | Portfolio</title>
 
-  <!-- Google Fonts matching Badri's aesthetic -->
+  <!-- Google Fonts matching Badri's clean editorial aesthetic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
-    /* DESIGN SYSTEM & COLORS */
+    /* DESIGN SYSTEM & COLOR VARIABLES */
     :root {
       --bg-white: #FFFFFF;
-      --bg-azure-pastel: #A7C4D8;
-      --bg-orange-pastel: #DBC7AB;
+      --pastel-azure: #a7c4d8;
+      --pastel-orange: #dbc7ab;
       
-      /* Subtle cohesive blends for seamless scrolling */
-      --azure-subtle: rgba(167, 196, 216, 0.12);
-      --orange-subtle: rgba(219, 199, 171, 0.12);
-      --border-subtle: rgba(0, 0, 0, 0.08);
-
       --text-dark: #111111;
-      --text-muted: #666666;
-      --text-light: #888888;
+      --text-muted: #4A4A4A;
+      --text-light: #777777;
+
+      --border-subtle: rgba(0, 0, 0, 0.08);
 
       --font-serif: 'Playfair Display', Georgia, serif;
       --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
@@ -54,11 +51,11 @@
       text-decoration: none;
     }
 
-    /* SCROLL ANIMATIONS */
+    /* SCROLL ANIMATIONS (Text Flow & Fade-Up Effect) */
     .fade-in-up {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(35px);
+      transition: opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1), transform 0.85s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     .fade-in-up.visible {
@@ -83,7 +80,6 @@
     }
 
     .nav-logo {
-      font-family: var(--font-sans);
       font-size: 0.9rem;
       font-weight: 700;
       letter-spacing: 0.1em;
@@ -109,36 +105,85 @@
       color: var(--text-dark);
     }
 
-    /* HERO SECTION */
+    /* 1. HERO SECTION (Full Screen 100vh in Pastel Azure) */
     .hero-section {
-      min-height: 80vh;
+      height: 100vh;
+      width: 100%;
+      background-color: var(--pastel-azure);
       display: flex;
-      flex-direction: column;
-      justify-content: center;
       align-items: center;
+      justify-content: space-between;
+      padding: 0 8%;
+      position: relative;
+    }
+
+    .hero-left-photo {
+      width: 320px;
+      height: 420px;
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      font-size: 0.85rem;
       text-align: center;
-      padding: 10rem 2rem 4rem;
-      background: linear-gradient(180deg, var(--bg-white) 0%, var(--azure-subtle) 100%);
+      padding: 1rem;
+      border-radius: 4px;
+    }
+
+    .hero-right-content {
+      flex: 1;
+      margin-left: 5rem;
+    }
+
+    .hero-subheading {
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--pastel-orange);
+      margin-bottom: 1rem;
+      display: block;
+      text-shadow: 0px 1px 2px rgba(0,0,0,0.15);
     }
 
     .hero-title {
       font-family: var(--font-serif);
-      font-size: 4.5rem;
+      font-size: 4.8rem;
       font-weight: 400;
       font-style: italic;
-      line-height: 1.1;
+      line-height: 1.05;
+      color: var(--text-dark);
       margin-bottom: 1rem;
     }
 
-    .hero-subtitle {
-      font-size: 1rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
+    .hero-desc {
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
       color: var(--text-muted);
-      max-width: 600px;
     }
 
-    /* ABOUT, EDUCATION & PUBLICATIONS (SPLIT LAYOUT) */
+    .hero-scroll-indicator {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+      40% { transform: translate(-50%, -8px); }
+      60% { transform: translate(-50%, -4px); }
+    }
+
+    /* 2. ABOUT, EDUCATION & PUBLICATIONS (Sticky Split Layout) */
     .split-section {
       display: flex;
       position: relative;
@@ -154,7 +199,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: var(--orange-subtle);
+      background: rgba(219, 199, 171, 0.15);
       padding: 3rem;
       border-right: 1px solid var(--border-subtle);
     }
@@ -168,7 +213,6 @@
       justify-content: center;
       color: var(--text-light);
       font-size: 0.85rem;
-      letter-spacing: 0.05em;
       text-align: center;
       padding: 1.5rem;
       border-radius: 2px;
@@ -225,62 +269,73 @@
       font-weight: 600;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--bg-azure-pastel);
-      border-bottom: 1px solid var(--bg-azure-pastel);
+      color: var(--text-dark);
+      border-bottom: 1px solid var(--text-dark);
       padding-bottom: 2px;
     }
 
-    /* BADRI'S EXACT EXPERIENCE SECTION LAYOUT */
+    /* 3. EXPERIENCE SECTION (Pastel Azure Accent Elements) */
     .experience-section {
       padding: 6rem 8%;
       background: var(--bg-white);
       border-bottom: 1px solid var(--border-subtle);
     }
 
-    .section-main-title {
+    /* Experience Header Banner in Pastel Azure */
+    .exp-header-box {
+      background-color: var(--pastel-azure);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      border-radius: 4px;
+      margin-bottom: 3rem;
+    }
+
+    .exp-header-box h2 {
       font-family: var(--font-serif);
       font-size: 3.5rem;
       font-style: italic;
-      text-align: center;
-      margin-bottom: 4rem;
+      font-weight: 400;
+      color: var(--text-dark);
     }
 
-    /* 3 Horizontal Category Header Tabs */
+    /* 3 Clickable Rectangles in Pastel Azure */
     .exp-tabs-header {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      border-top: 1px solid var(--border-subtle);
-      border-bottom: 1px solid var(--border-subtle);
+      gap: 1.5rem;
       margin-bottom: 4rem;
     }
 
     .exp-tab-item {
-      padding: 1.5rem 1rem;
+      padding: 1.8rem 1.5rem;
       cursor: pointer;
-      border-bottom: 2px solid transparent;
-      transition: all 0.3s ease;
-      background: transparent;
+      background-color: var(--pastel-azure);
+      border: 1px solid rgba(0,0,0,0.05);
+      border-radius: 4px;
+      transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+      opacity: 0.85;
     }
 
-    .exp-tab-item.active {
-      border-bottom: 2px solid var(--text-dark);
-      background: var(--azure-subtle);
+    .exp-tab-item:hover, .exp-tab-item.active {
+      opacity: 1;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
     }
 
     .exp-tab-num {
       font-size: 0.75rem;
-      color: var(--text-light);
+      color: var(--text-muted);
       margin-bottom: 0.5rem;
       display: block;
     }
 
     .exp-tab-title {
-      font-size: 1.1rem;
+      font-size: 1.05rem;
       font-weight: 600;
       color: var(--text-dark);
     }
 
-    /* Active Experience Display Grid */
+    /* Content Grid */
     .exp-content-grid {
       display: none;
       grid-template-columns: 1fr 1.2fr;
@@ -301,6 +356,7 @@
       justify-content: center;
       color: var(--text-light);
       font-size: 0.85rem;
+      border-radius: 4px;
     }
 
     .exp-details-block {
@@ -326,7 +382,7 @@
       line-height: 1.75;
     }
 
-    /* Badri's Circular Number Navigation Below Experience */
+    /* 3 Circular Navigation Buttons in Pastel Azure */
     .exp-circle-nav {
       display: flex;
       justify-content: center;
@@ -335,11 +391,12 @@
     }
 
     .circle-btn {
-      width: 42px;
-      height: 42px;
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
-      border: 1px solid var(--border-subtle);
-      background: #FFFFFF;
+      border: none;
+      background-color: var(--pastel-azure);
+      color: var(--text-dark);
       font-size: 0.85rem;
       font-weight: 600;
       cursor: pointer;
@@ -347,31 +404,39 @@
       align-items: center;
       justify-content: center;
       transition: all 0.25s ease;
+      opacity: 0.7;
     }
 
-    .circle-btn.active {
-      background: var(--text-dark);
-      color: #FFFFFF;
-      border-color: var(--text-dark);
+    .circle-btn.active, .circle-btn:hover {
+      opacity: 1;
+      transform: scale(1.08);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    /* BEYOND THE CLASSROOM SECTION */
+    /* 4. BEYOND THE CLASSROOM (White Fade into Pastel Orange) */
     .beyond-section {
-      padding: 6rem 8%;
-      background: linear-gradient(180deg, var(--bg-white) 0%, var(--orange-subtle) 100%);
+      padding: 7rem 8%;
+      background: linear-gradient(180deg, #FFFFFF 0%, var(--pastel-orange) 100%);
       border-bottom: 1px solid var(--border-subtle);
     }
 
     .beyond-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 3rem;
+      gap: 3.5rem;
       margin-top: 3rem;
+    }
+
+    .beyond-card {
+      background: #FFFFFF;
+      padding: 2rem;
+      border-radius: 4px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.03);
     }
 
     .beyond-card-img {
       width: 100%;
-      height: 320px;
+      height: 300px;
       background: #EAEAEA;
       margin-bottom: 1.5rem;
       display: flex;
@@ -379,22 +444,23 @@
       justify-content: center;
       color: var(--text-light);
       font-size: 0.85rem;
+      border-radius: 2px;
     }
 
     .beyond-card h3 {
       font-family: var(--font-serif);
-      font-size: 1.5rem;
+      font-size: 1.6rem;
       font-style: italic;
       margin-bottom: 0.5rem;
     }
 
     .beyond-card p {
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: var(--text-muted);
       line-height: 1.7;
     }
 
-    /* THINGS I'VE WORKED ON SECTION */
+    /* 5. THINGS I'VE WORKED ON */
     .worked-section {
       padding: 6rem 8%;
       background: var(--bg-white);
@@ -409,9 +475,9 @@
     }
 
     .worked-card {
-      padding: 2rem;
+      padding: 2.2rem;
       border: 1px solid var(--border-subtle);
-      background: var(--azure-subtle);
+      background: rgba(167, 196, 216, 0.1);
       border-radius: 4px;
     }
 
@@ -427,50 +493,55 @@
       color: var(--text-muted);
     }
 
-    /* GET IN TOUCH / CONTACT SECTION (EXACTLY MATCHING BADRI'S) */
+    /* 6. GET IN TOUCH / CONTACT SECTION (Pastel Gray Orange Background) */
     .contact-section {
-      padding: 8rem 2rem;
+      padding: 9rem 2rem;
       text-align: center;
-      background: var(--bg-white);
+      background-color: var(--pastel-orange);
     }
 
-    .contact-label {
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      margin-bottom: 1rem;
-      display: block;
+    .contact-title-wrap {
+      margin-bottom: 3.5rem;
     }
 
-    .contact-heading {
+    .contact-title-script {
       font-family: var(--font-serif);
-      font-size: 3.5rem;
+      font-size: 3.8rem;
       font-style: italic;
-      margin-bottom: 2rem;
+      line-height: 1;
+      display: block;
+      color: var(--text-dark);
     }
 
-    .contact-links-list {
-      display: flex;
-      justify-content: center;
-      gap: 2rem;
-      list-style: none;
-      flex-wrap: wrap;
-    }
-
-    .contact-tag {
-      font-size: 0.85rem;
-      font-weight: 500;
+    .contact-title-bold {
+      font-family: var(--font-sans);
+      font-size: 5rem;
+      font-weight: 800;
       letter-spacing: 0.05em;
-      padding: 0.6rem 1.4rem;
-      border-radius: 20px;
-      background: var(--orange-subtle);
-      border: 1px solid rgba(219, 199, 171, 0.4);
-      transition: background 0.2s ease;
+      text-transform: uppercase;
+      line-height: 0.9;
+      display: block;
+      color: #FFFFFF;
+      text-shadow: 0px 2px 4px rgba(0,0,0,0.08);
     }
 
-    .contact-tag:hover {
-      background: var(--bg-orange-pastel);
+    .contact-links-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .contact-arrow-link {
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: var(--text-dark);
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .contact-arrow-link:hover {
+      transform: translateX(4px);
+      opacity: 0.75;
     }
 
     footer {
@@ -478,19 +549,25 @@
       display: flex;
       justify-content: space-between;
       font-size: 0.75rem;
-      color: var(--text-light);
-      border-top: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      background-color: var(--pastel-orange);
+      border-top: 1px solid rgba(0,0,0,0.05);
     }
 
-    /* RESPONSIVE BREAKPOINTS */
+    /* RESPONSIVE DESIGN */
     @media (max-width: 900px) {
       nav { padding: 1rem 2rem; }
+      .hero-section { flex-direction: column; justify-content: center; height: auto; padding: 8rem 2rem 5rem; }
+      .hero-left-photo { width: 100%; height: 280px; margin-bottom: 2rem; }
+      .hero-right-content { margin-left: 0; text-align: center; }
+      .hero-title { font-size: 3.2rem; }
       .split-section { flex-direction: column; }
       .left-sticky-panel { height: 300px; position: relative; }
       .right-scroll-panel { padding: 3rem 1.5rem; }
       .exp-tabs-header { grid-template-columns: 1fr; }
       .exp-content-grid { grid-template-columns: 1fr; }
       .beyond-grid, .worked-grid { grid-template-columns: 1fr; }
+      .contact-title-bold { font-size: 3.2rem; }
     }
   </style>
 </head>
@@ -506,22 +583,29 @@
     </ul>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero-section fade-in-up">
-    <h1 class="hero-title">Samantha Durst</h1>
-    <p class="hero-subtitle">Feature Writer, Digital Storyteller & Community Relations</p>
+  <!-- Section 1: Hero / Title (Full Screen 100vh in Pastel Azure) -->
+  <section class="hero-section">
+    <div class="hero-left-photo fade-in-up">
+      [ Photo Placeholder ]
+    </div>
+    <div class="hero-right-content fade-in-up">
+      <span class="hero-subheading">WELCOME TO MY PORTFOLIO</span>
+      <h1 class="hero-title">Samantha Durst</h1>
+      <p class="hero-desc">Feature Writer, Digital Storyteller & Community Relations Specialist</p>
+    </div>
+    <div class="hero-scroll-indicator">scroll ↓</div>
   </section>
 
-  <!-- About, Education & Publications (Sticky Left / Scrolling Right) -->
+  <!-- Section 2: About, Education & Publications -->
   <section class="split-section" id="about">
     <div class="left-sticky-panel">
       <div class="sticky-photo-frame">
-        [ Portrait Photo Placeholder ]
+        [ Photo Placeholder ]
       </div>
     </div>
 
     <div class="right-scroll-panel">
-      <!-- About -->
+      <!-- About Block -->
       <div class="scroll-block fade-in-up">
         <span class="section-label">About</span>
         <div class="bio-text">
@@ -529,8 +613,8 @@
         </div>
       </div>
 
-      <!-- Education -->
-      <div class="scroll-block fade-in-up">
+      <!-- Education Block -->
+      <div class="scroll-block fade-in-up" id="education">
         <span class="section-label">Education</span>
         <div class="edu-item">
           <h3 class="edu-title">University of California, Los Angeles</h3>
@@ -539,23 +623,27 @@
         </div>
       </div>
 
-      <!-- Publications (Directly Under Education) -->
-      <div class="scroll-block fade-in-up">
+      <!-- Publications Block -->
+      <div class="scroll-block fade-in-up" id="publications">
         <span class="section-label">Publications</span>
         <div class="pub-item">
           <h3 class="pub-title">Her Campus Media at UCLA</h3>
-          <p class="pub-sub">Author archive covering entertainment, campus lifestyle, and community features.</p>
-          <a href="https://www.hercampus.com/author/samantha-durst/" target="_blank" rel="noopener" class="pub-link">Read Articles →</a>
+          <p class="pub-sub">Author archive covering campus lifestyle, entertainment features, and commentary.</p>
+          <a href="https://www.hercampus.com/author/samantha-durst/" target="_blank" rel="noopener" class="pub-link">Read Author Archive →</a>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Experience Section (Badri's Exact Layout with 3 Categories) -->
+  <!-- Section 3: Experience (Pastel Azure Accent Elements) -->
   <section class="experience-section fade-in-up" id="experience">
-    <h2 class="section-main-title">Experience</h2>
+    
+    <!-- Experience Title Box in Pastel Azure -->
+    <div class="exp-header-box">
+      <h2>Experience</h2>
+    </div>
 
-    <!-- 3 Numbered Header Tabs -->
+    <!-- 3 Clickable Rectangles in Pastel Azure -->
     <div class="exp-tabs-header">
       <div class="exp-tab-item active" onclick="switchExpTab(0)">
         <span class="exp-tab-num">01</span>
@@ -578,12 +666,12 @@
         <div class="exp-details-block">
           <h3 class="exp-org-title">BET at Paramount</h3>
           <p class="exp-role-meta">Corporate Communications & PR Intern | Los Angeles, CA</p>
-          <p class="exp-desc">Supported corporate communications across broadcast announcements, executive memos, and live press activations. Maintained targeted media databases covering leading entertainment and culture publications.</p>
+          <p class="exp-desc">Supported corporate communications across broadcast announcements, executive media memos, and live press activations. Constructed targeted press databases spanning key entertainment and Black media outlets.</p>
         </div>
         <div class="exp-details-block">
           <h3 class="exp-org-title">We Love Leimert</h3>
-          <p class="exp-role-meta">Digital Storytelling & Archival Intern | Los Angeles, CA</p>
-          <p class="exp-desc">Documented local commercial landmarks and conducted field interviews across Leimert Park to compile oral histories for digital platforms.</p>
+          <p class="exp-role-meta">Digital Storytelling Intern | Los Angeles, CA</p>
+          <p class="exp-desc">Mapped local commercial landmarks and conducted field interviews across Leimert Park to compile oral histories for community platforms.</p>
         </div>
       </div>
     </div>
@@ -595,12 +683,12 @@
         <div class="exp-details-block">
           <h3 class="exp-org-title">Her Campus Media</h3>
           <p class="exp-role-meta">Feature Writer & Journalist | UCLA</p>
-          <p class="exp-desc">Researched and authored published feature articles focusing on campus culture, entertainment media, and student perspectives.</p>
+          <p class="exp-desc">Researched, pitched, and wrote published feature stories focusing on campus culture, entertainment media, and student perspectives.</p>
         </div>
         <div class="exp-details-block">
           <h3 class="exp-org-title">Non-Profit Grant Proposals</h3>
           <p class="exp-role-meta">Grant & Program Copywriter</p>
-          <p class="exp-desc">Authored grant proposals, program descriptions, and evaluation frameworks for international youth literacy and conservation non-profits.</p>
+          <p class="exp-desc">Authored grant proposals, program descriptions, and evaluation metrics for youth literacy and conservation non-profit organizations.</p>
         </div>
       </div>
     </div>
@@ -612,17 +700,17 @@
         <div class="exp-details-block">
           <h3 class="exp-org-title">Changeist</h3>
           <p class="exp-role-meta">Team Leader Mentorship Intern | Los Angeles, CA</p>
-          <p class="exp-desc">Facilitated youth workshops on environmental justice and civic engagement, guiding teams through community service learning projects.</p>
+          <p class="exp-desc">Facilitated youth workshops on environmental justice and public health, guiding middle school participants through hands-on service learning projects.</p>
         </div>
         <div class="exp-details-block">
           <h3 class="exp-org-title">Kappa Delta Sorority</h3>
           <p class="exp-role-meta">Health & Wellness Director | UCLA</p>
-          <p class="exp-desc">Managed community wellness programming and weekly communications for over 300 active collegiate members.</p>
+          <p class="exp-desc">Managed community wellness programming, authored proposals, and structured weekly communications for over 300 members.</p>
         </div>
       </div>
     </div>
 
-    <!-- Circular Navigation Buttons Below -->
+    <!-- 3 Circular Navigation Buttons in Pastel Azure -->
     <div class="exp-circle-nav">
       <button class="circle-btn active" onclick="switchExpTab(0)">01</button>
       <button class="circle-btn" onclick="switchExpTab(1)">02</button>
@@ -630,55 +718,58 @@
     </div>
   </section>
 
-  <!-- Beyond the Classroom (Placed directly under Experience) -->
+  <!-- Section 4: Beyond the Classroom (White Fade into Pastel Gray Orange) -->
   <section class="beyond-section fade-in-up" id="beyond">
-    <span class="section-label" style="text-align: center;">Beyond the Classroom</span>
+    <span class="section-label" style="text-align: center;">Interests & Involvement</span>
+    <h2 style="font-family: var(--font-serif); font-size: 3rem; font-style: italic; text-align: center; margin-top: 0.5rem;">Beyond the Classroom</h2>
+
     <div class="beyond-grid">
       <div class="beyond-card">
         <div class="beyond-card-img">[ Community Activity Photo ]</div>
-        <h3>Youth Literacy & Soccer</h3>
-        <p>Combining athletics and educational equity through Reading on the Pitch youth workshops.</p>
+        <h3>Youth Literacy & Athletics</h3>
+        <p>Volunteering with initiatives like Reading on the Pitch to combine sports, youth mentorship, and educational equity programs.</p>
       </div>
       <div class="beyond-card">
         <div class="beyond-card-img">[ Creative Project Photo ]</div>
         <h3>Creative Writing & Arts</h3>
-        <p>Exploring creative prose, canvas painting, digital storytelling, and media production.</p>
+        <p>Exploring creative prose, canvas painting, digital storytelling, and multi-layered media production.</p>
       </div>
     </div>
   </section>
 
-  <!-- Things I've Worked On (Placed below Beyond the Classroom) -->
+  <!-- Section 5: Things I've Worked On -->
   <section class="worked-section fade-in-up" id="worked-on">
     <span class="section-label">Projects</span>
-    <h2 style="font-family: var(--font-serif); font-size: 2.5rem; font-style: italic; margin-top: 0.5rem;">Things I've Worked On</h2>
+    <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-style: italic; margin-top: 0.5rem;">Things I've Worked On</h2>
 
     <div class="worked-grid">
       <div class="worked-card">
         <h3>Media Pitching Campaign</h3>
-        <p>Developed targeted media pitches and press lists for national broadcast campaigns.</p>
+        <p>Developed targeted media pitches and press lists for national entertainment activations.</p>
       </div>
       <div class="worked-card">
         <h3>Leimert Park Directory</h3>
-        <p>Compiled commercial landmark directory data for neighborhood storytelling initiatives.</p>
+        <p>Compiled commercial landmark directory data for neighborhood digital storytelling platforms.</p>
       </div>
       <div class="worked-card">
         <h3>Youth Workshop Series</h3>
-        <p>Designed hands-on learning modules on environmental justice and public health.</p>
+        <p>Designed hands-on learning modules and activity guides on environmental justice.</p>
       </div>
     </div>
   </section>
 
-  <!-- Get in Touch (Matching Badri's Clean Contact Section) -->
+  <!-- Section 6: Get in Touch (Pastel Gray Orange Background - Replicating Badri's Layout) -->
   <section class="contact-section fade-in-up" id="contact">
-    <span class="contact-label">Contact</span>
-    <h2 class="contact-heading">Get in Touch</h2>
+    <div class="contact-title-wrap">
+      <span class="contact-title-script">get in</span>
+      <span class="contact-title-bold">TOUCH</span>
+    </div>
 
-    <ul class="contact-links-list">
-      <li class="contact-tag"><a href="mailto:samdurst@g.ucla.edu">samdurst@g.ucla.edu</a></li>
-      <li class="contact-tag"><a href="tel:6196695180">(619) 669-5180</a></li>
-      <li class="contact-tag">Los Angeles, CA</li>
-      <li class="contact-tag"><a href="https://www.hercampus.com/author/samantha-durst/" target="_blank" rel="noopener">Her Campus Profile</a></li>
-    </ul>
+    <div class="contact-links-stack">
+      <a href="mailto:samdurst@g.ucla.edu" class="contact-arrow-link">→ samdurst@g.ucla.edu</a>
+      <a href="tel:6196695180" class="contact-arrow-link">→ (619) 669-5180</a>
+      <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="contact-arrow-link">→ LinkedIn</a>
+    </div>
   </section>
 
   <!-- Footer -->
@@ -687,7 +778,7 @@
     <div>UCLA • Los Angeles</div>
   </footer>
 
-  <!-- INTERACTIVE JS FOR TABS AND SCROLL REVEAL ANIMATIONS -->
+  <!-- INTERACTIVE JS FOR TABS AND SCROLL FLOW ANIMATIONS -->
   <script>
     // Tab Switcher Function
     function switchExpTab(index) {
@@ -708,10 +799,10 @@
       });
     }
 
-    // IntersectionObserver for Dynamic Scroll-Reveal Animations
+    // IntersectionObserver for Scroll Animations
     document.addEventListener('DOMContentLoaded', () => {
       const observerOptions = {
-        threshold: 0.15
+        threshold: 0.12
       };
 
       const observer = new IntersectionObserver((entries, observer) => {

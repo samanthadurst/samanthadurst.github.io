@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Samantha Durst | Portfolio</title>
 
-  <!-- Google Fonts matching Badri's clean editorial aesthetic -->
+  <!-- Google Fonts matching clean editorial aesthetic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -281,7 +281,6 @@
       border-bottom: 1px solid var(--border-subtle);
     }
 
-    /* Experience Header Banner in Pastel Azure */
     .exp-header-box {
       background-color: var(--pastel-azure);
       padding: 2.5rem 2rem;
@@ -298,7 +297,6 @@
       color: var(--text-dark);
     }
 
-    /* 3 Clickable Rectangles in Pastel Azure */
     .exp-tabs-header {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -335,7 +333,6 @@
       color: var(--text-dark);
     }
 
-    /* Content Grid */
     .exp-content-grid {
       display: none;
       grid-template-columns: 1fr 1.2fr;
@@ -382,7 +379,6 @@
       line-height: 1.75;
     }
 
-    /* 3 Circular Navigation Buttons in Pastel Azure */
     .exp-circle-nav {
       display: flex;
       justify-content: center;
@@ -413,7 +409,7 @@
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
-    /* 4. BEYOND THE CLASSROOM (White Fade into Pastel Orange) */
+    /* 4. BEYOND THE CLASSROOM */
     .beyond-section {
       padding: 7rem 8%;
       background: linear-gradient(180deg, #FFFFFF 0%, var(--pastel-orange) 100%);
@@ -493,7 +489,7 @@
       color: var(--text-muted);
     }
 
-    /* 6. GET IN TOUCH / CONTACT SECTION (Pastel Gray Orange Background) */
+    /* 6. GET IN TOUCH / CONTACT SECTION */
     .contact-section {
       padding: 9rem 2rem;
       text-align: center;
@@ -583,7 +579,7 @@
     </ul>
   </nav>
 
-  <!-- Section 1: Hero / Title (Full Screen 100vh in Pastel Azure) -->
+  <!-- Section 1: Hero / Title -->
   <section class="hero-section">
     <div class="hero-left-photo fade-in-up">
       [ Photo Placeholder ]
@@ -635,15 +631,13 @@
     </div>
   </section>
 
-  <!-- Section 3: Experience (Pastel Azure Accent Elements) -->
+  <!-- Section 3: Experience -->
   <section class="experience-section fade-in-up" id="experience">
     
-    <!-- Experience Title Box in Pastel Azure -->
     <div class="exp-header-box">
       <h2>Experience</h2>
     </div>
 
-    <!-- 3 Clickable Rectangles in Pastel Azure -->
     <div class="exp-tabs-header">
       <div class="exp-tab-item active" onclick="switchExpTab(0)">
         <span class="exp-tab-num">01</span>
@@ -659,7 +653,7 @@
       </div>
     </div>
 
-    <!-- Active Tab 01 Content -->
+    <!-- Tab 01 Content -->
     <div class="exp-content-grid active">
       <div class="exp-image-frame">[ Media & Community Relations Photo ]</div>
       <div>
@@ -676,7 +670,7 @@
       </div>
     </div>
 
-    <!-- Active Tab 02 Content -->
+    <!-- Tab 02 Content -->
     <div class="exp-content-grid">
       <div class="exp-image-frame">[ Research & Writing Photo ]</div>
       <div>
@@ -693,7 +687,7 @@
       </div>
     </div>
 
-    <!-- Active Tab 03 Content -->
+    <!-- Tab 03 Content -->
     <div class="exp-content-grid">
       <div class="exp-image-frame">[ Leadership Photo ]</div>
       <div>
@@ -710,7 +704,6 @@
       </div>
     </div>
 
-    <!-- 3 Circular Navigation Buttons in Pastel Azure -->
     <div class="exp-circle-nav">
       <button class="circle-btn active" onclick="switchExpTab(0)">01</button>
       <button class="circle-btn" onclick="switchExpTab(1)">02</button>
@@ -718,7 +711,7 @@
     </div>
   </section>
 
-  <!-- Section 4: Beyond the Classroom (White Fade into Pastel Gray Orange) -->
+  <!-- Section 4: Beyond the Classroom -->
   <section class="beyond-section fade-in-up" id="beyond">
     <span class="section-label" style="text-align: center;">Interests & Involvement</span>
     <h2 style="font-family: var(--font-serif); font-size: 3rem; font-style: italic; text-align: center; margin-top: 0.5rem;">Beyond the Classroom</h2>
@@ -758,7 +751,7 @@
     </div>
   </section>
 
-  <!-- Section 6: Get in Touch (Pastel Gray Orange Background - Replicating Badri's Layout) -->
+  <!-- Section 6: Get in Touch -->
   <section class="contact-section fade-in-up" id="contact">
     <div class="contact-title-wrap">
       <span class="contact-title-script">get in</span>
@@ -780,13 +773,13 @@
 
   <!-- INTERACTIVE JS FOR TABS AND SCROLL FLOW ANIMATIONS -->
   <script>
-    // Tab Switcher Function
+    // Tab switching functionality
     function switchExpTab(index) {
-      const headerTabs = document.querySelectorAll('.exp-tab-item');
+      const tabItems = document.querySelectorAll('.exp-tab-item');
       const contentGrids = document.querySelectorAll('.exp-content-grid');
       const circleBtns = document.querySelectorAll('.circle-btn');
 
-      headerTabs.forEach((tab, i) => {
+      tabItems.forEach((tab, i) => {
         tab.classList.toggle('active', i === index);
       });
 
@@ -799,23 +792,23 @@
       });
     }
 
-    // IntersectionObserver for Scroll Animations
+    // Intersection Observer for Scroll Fade-in Animations
     document.addEventListener('DOMContentLoaded', () => {
       const observerOptions = {
-        threshold: 0.12
+        root: null,
+        threshold: 0.15
       };
 
-      const observer = new IntersectionObserver((entries, observer) => {
+      const observer = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
+            obs.unobserve(entry.target);
           }
         });
       }, observerOptions);
 
-      document.querySelectorAll('.fade-in-up').forEach(el => {
-        observer.observe(el);
-      });
+      document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
     });
   </script>
 </body>

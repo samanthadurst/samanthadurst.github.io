@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Samantha Durst | Portfolio</title>
 
-  <!-- Google Fonts matching clean editorial aesthetic -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -14,7 +13,7 @@
     /* DESIGN SYSTEM & COLOR VARIABLES */
     :root {
       --bg-white: #FFFFFF;
-      --pastel-azure: #a7c4d8;
+      --pastel-azure: #cad4db; /* Updated Light Azure */
       --pastel-orange: #dbc7ab;
       
       --text-dark: #111111;
@@ -51,7 +50,7 @@
       text-decoration: none;
     }
 
-    /* SCROLL ANIMATIONS (Text Flow & Fade-Up Effect) */
+    /* SCROLL ANIMATIONS */
     .fade-in-up {
       opacity: 0;
       transform: translateY(35px);
@@ -105,7 +104,7 @@
       color: var(--text-dark);
     }
 
-    /* 1. HERO SECTION (Full Screen 100vh in Pastel Azure) */
+    /* 1. HERO SECTION */
     .hero-section {
       height: 100vh;
       width: 100%;
@@ -117,9 +116,10 @@
       position: relative;
     }
 
+    /* Enlarged Title Page Photo */
     .hero-left-photo {
-      width: 320px;
-      height: 420px;
+      width: 380px;
+      height: 500px;
       background: rgba(255, 255, 255, 0.4);
       border: 1px solid rgba(0, 0, 0, 0.1);
       display: flex;
@@ -162,6 +162,25 @@
       font-size: 1.1rem;
       letter-spacing: 0.05em;
       color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Light Azure LinkedIn Link & Arrow */
+    .linkedin-hero-link {
+      color: var(--pastel-azure);
+      font-weight: 600;
+      text-decoration: none;
+      font-size: 1rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      background: rgba(255, 255, 255, 0.8);
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+    }
+
+    .linkedin-hero-link .arrow {
+      color: var(--pastel-azure);
     }
 
     .hero-scroll-indicator {
@@ -183,7 +202,7 @@
       60% { transform: translate(-50%, -4px); }
     }
 
-    /* 2. ABOUT, EDUCATION & PUBLICATIONS (Sticky Split Layout) */
+    /* 2. ABOUT, EDUCATION & PUBLICATIONS */
     .split-section {
       display: flex;
       position: relative;
@@ -237,20 +256,21 @@
       display: block;
     }
 
-    .bio-text {
-      font-size: 1.15rem;
+    .bio-text p {
+      font-size: 1.05rem;
       color: var(--text-dark);
-      line-height: 1.85;
+      line-height: 1.8;
       font-weight: 300;
+      margin-bottom: 1.25rem;
     }
 
     .edu-item, .pub-item {
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
 
     .edu-title, .pub-title {
       font-family: var(--font-serif);
-      font-size: 1.6rem;
+      font-size: 1.4rem;
       font-style: italic;
       color: var(--text-dark);
       margin-bottom: 0.25rem;
@@ -259,22 +279,34 @@
     .edu-sub, .pub-sub {
       font-size: 0.85rem;
       color: var(--text-muted);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.5rem;
     }
 
-    .pub-link {
+    /* Star Shaped Author Link Button */
+    .author-star-box {
+      margin-top: 2rem;
       display: inline-block;
-      margin-top: 0.5rem;
-      font-size: 0.8rem;
+      padding: 0.8rem 1.4rem;
+      border: 2px solid var(--pastel-orange);
+      background: var(--bg-white);
+      border-radius: 6px;
+      font-size: 0.85rem;
       font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      letter-spacing: 0.05em;
       color: var(--text-dark);
-      border-bottom: 1px solid var(--text-dark);
-      padding-bottom: 2px;
+      transition: all 0.25s ease;
     }
 
-    /* 3. EXPERIENCE SECTION (Pastel Azure Accent Elements) */
+    .author-star-box:hover {
+      background: var(--pastel-orange);
+    }
+
+    .star-icon {
+      color: #f4a261;
+      margin-right: 0.4rem;
+    }
+
+    /* 3. EXPERIENCE SECTION */
     .experience-section {
       padding: 6rem 8%;
       background: var(--bg-white);
@@ -370,13 +402,19 @@
     .exp-role-meta {
       font-size: 0.85rem;
       color: var(--text-light);
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
-    .exp-desc {
+    .exp-bullets {
+      list-style-type: disc;
+      padding-left: 1.2rem;
       font-size: 0.95rem;
       color: var(--text-muted);
-      line-height: 1.75;
+      line-height: 1.7;
+    }
+
+    .exp-bullets li {
+      margin-bottom: 0.5rem;
     }
 
     .exp-circle-nav {
@@ -473,7 +511,7 @@
     .worked-card {
       padding: 2.2rem;
       border: 1px solid var(--border-subtle);
-      background: rgba(167, 196, 216, 0.1);
+      background: rgba(202, 212, 219, 0.15);
       border-radius: 4px;
     }
 
@@ -489,7 +527,7 @@
       color: var(--text-muted);
     }
 
-    /* 6. GET IN TOUCH / CONTACT SECTION */
+    /* 6. GET IN TOUCH */
     .contact-section {
       padding: 9rem 2rem;
       text-align: center;
@@ -554,7 +592,7 @@
     @media (max-width: 900px) {
       nav { padding: 1rem 2rem; }
       .hero-section { flex-direction: column; justify-content: center; height: auto; padding: 8rem 2rem 5rem; }
-      .hero-left-photo { width: 100%; height: 280px; margin-bottom: 2rem; }
+      .hero-left-photo { width: 100%; height: 320px; margin-bottom: 2rem; }
       .hero-right-content { margin-left: 0; text-align: center; }
       .hero-title { font-size: 3.2rem; }
       .split-section { flex-direction: column; }
@@ -569,7 +607,6 @@
 </head>
 <body>
 
-  <!-- Navigation Bar -->
   <nav>
     <div class="nav-logo">Samantha Durst</div>
     <ul class="nav-links">
@@ -579,59 +616,107 @@
     </ul>
   </nav>
 
-  <!-- Section 1: Hero / Title -->
   <section class="hero-section">
     <div class="hero-left-photo fade-in-up">
-      [ Photo Placeholder ]
+      [ Larger Title Photo Placeholder ]
     </div>
     <div class="hero-right-content fade-in-up">
       <span class="hero-subheading">WELCOME TO MY PORTFOLIO</span>
       <h1 class="hero-title">Samantha Durst</h1>
-      <p class="hero-desc">Feature Writer, Digital Storyteller & Community Relations Specialist</p>
+      <p class="hero-desc">Aspiring Public Relations Strategist, Social Impact Leader & Entertainment Professional at UCLA</p>
+      <a href="https://www.linkedin.com/in/samantha-durst/" target="_blank" rel="noopener" class="linkedin-hero-link">
+        LinkedIn <span class="arrow">&rarr;</span>
+      </a>
     </div>
     <div class="hero-scroll-indicator">scroll ↓</div>
   </section>
 
-  <!-- Section 2: About, Education & Publications -->
   <section class="split-section" id="about">
     <div class="left-sticky-panel">
       <div class="sticky-photo-frame">
-        [ Photo Placeholder ]
+        [ Sticky Panel Photo ]
       </div>
     </div>
 
     <div class="right-scroll-panel">
-      <!-- About Block -->
       <div class="scroll-block fade-in-up">
         <span class="section-label">About</span>
         <div class="bio-text">
-          <p>I am an undergraduate researcher, feature writer, and digital media storyteller with extensive experience bridging corporate public relations, journalistic reporting, and community-based advocacy. Through my work in communications and community engagement, I focus on bringing clarity, accountability, and depth to human-centered stories.</p>
+          <p>I want to tell stories that bring attention to voices and communities that are often overlooked.</p>
+          <p>I’m interested in journalism, entertainment media, and public relations. Across these fields, I’m drawn to storytelling that centers lived experience and builds meaningful connections between media and the communities it represents. My interest in writing started with poetry. Growing up, I became increasingly aware of social inequalities around me but didn’t always know how to respond. Writing gave me a way to process those experiences and think more deeply about identity and human rights. One of my poems was later published in the Top 50 American High School Poets series, which encouraged me to take my writing more seriously.</p>
+          <p>Today, I write as a Feature Writer for Her Campus, where I contribute stories that engage readers and explore culture and community. I’m especially interested in journalism that highlights underserved communities and accurately represents their lived experiences. Through my studies, volunteer work, and writing, I’ve developed strong communication skills and an ability to build trust with the people whose stories I tell. Alongside this, I'm passionate about entertainment media and public relations because I enjoy the relationship-building and collaboration behind strong media work. The intersection of media and civic responsibility is exactly where I want to be. Ultimately, I wish to build a career centered on storytelling that informs, connects, and reflects diverse communities.</p>
         </div>
       </div>
 
-      <!-- Education Block -->
       <div class="scroll-block fade-in-up" id="education">
         <span class="section-label">Education</span>
         <div class="edu-item">
           <h3 class="edu-title">University of California, Los Angeles</h3>
-          <p class="edu-sub">B.A. in English, Minor in Community Engagement & Social Change | June 2027</p>
-          <p style="font-size: 0.9rem; color: var(--text-muted);">Changemaker Scholar, Bruins Vote Ambassador, Special Olympics Unified Basketball Volunteer.</p>
+          <p class="edu-sub">B.A. in English, Minor in Community Engagement & Social Change</p>
+          <p style="font-size: 0.9rem; color: var(--text-muted);">Changemaker Scholar, Bruins Vote Ambassador, Special Olympics Event Planning, & Unified Basketball Volunteer.</p>
         </div>
       </div>
 
-      <!-- Publications Block -->
       <div class="scroll-block fade-in-up" id="publications">
         <span class="section-label">Publications</span>
+
         <div class="pub-item">
-          <h3 class="pub-title">Her Campus Media at UCLA</h3>
-          <p class="pub-sub">Author archive covering campus lifestyle, entertainment features, and commentary.</p>
-          <a href="https://www.hercampus.com/author/samantha-durst/" target="_blank" rel="noopener" class="pub-link">Read Author Archive →</a>
+          <h3 class="pub-title">Heard it First: Noah Kahan’s The Great Divide Was Worth the Wait</h3>
+          <p class="pub-sub">2026 · Her Campus Media at UCLA</p>
         </div>
+
+        <div class="pub-item">
+          <h3 class="pub-title">The Last of the Bugs</h3>
+          <p class="pub-sub">2026 · Her Campus</p>
+        </div>
+
+        <div class="pub-item">
+          <h3 class="pub-title">10 Ways to Make a Difference Ahead of Earth Day in Los Angeles</h3>
+          <p class="pub-sub">2026 · Her Campus</p>
+        </div>
+
+        <div class="pub-item">
+          <h3 class="pub-title">Throne of Glass Walked So ACOTAR Could Run</h3>
+          <p class="pub-sub">2026 · Her Campus</p>
+        </div>
+
+        <div class="pub-item">
+          <h3 class="pub-title">The FIFA World Cup Is Coming to LA: Here’s What You Need to Know</h3>
+          <p class="pub-sub">2026 · Her Campus</p>
+        </div>
+
+        <div class="pub-item">
+          <h3 class="pub-title">Friends First: The Rise of Platonic Shipping</h3>
+          <p class="pub-sub">2026 · Her Campus</p>
+        </div>
+
+        <div class="pub-item">
+          <h3 class="pub-title">My Takeaways From a Press Conference With Asha Banks</h3>
+          <p class="pub-sub">February 2, 2026 · Her Campus</p>
+        </div>
+
+        <div class="pub-item">
+          <h3 class="pub-title">Creating Change in Los Angeles: How College Students Can Empower Communities in Need</h3>
+          <p class="pub-sub">November 13, 2025 · Her Campus</p>
+        </div>
+
+        <div class="pub-item">
+          <h3 class="pub-title">From Phone Calls to Weekend Visits: Surviving and Thriving in a College Long Distance Relationship</h3>
+          <p class="pub-sub">October 30, 2025 · Her Campus</p>
+        </div>
+
+        <div class="pub-item">
+          <h3 class="pub-title">Visibly Invisible</h3>
+          <p class="pub-sub">National High School Poetry Contest, Live Poet’s Society of New Jersey · 2023 (Top 50 American High School Poet’s Published Poetry)</p>
+        </div>
+
+        <a href="https://www.hercampus.com/author/samantha-durst/" target="_blank" rel="noopener" class="author-star-box">
+          <span class="star-icon">★</span> Read Author Archive &rarr;
+        </a>
       </div>
     </div>
   </section>
 
-  <!-- Section 3: Experience -->
   <section class="experience-section fade-in-up" id="experience">
     
     <div class="exp-header-box">
@@ -653,53 +738,72 @@
       </div>
     </div>
 
-    <!-- Tab 01 Content -->
     <div class="exp-content-grid active">
       <div class="exp-image-frame">[ Media & Community Relations Photo ]</div>
       <div>
         <div class="exp-details-block">
           <h3 class="exp-org-title">BET at Paramount</h3>
           <p class="exp-role-meta">Corporate Communications & PR Intern | Los Angeles, CA</p>
-          <p class="exp-desc">Supported corporate communications across broadcast announcements, executive media memos, and live press activations. Constructed targeted press databases spanning key entertainment and Black media outlets.</p>
+          <p class="exp-desc">Supported corporate communications across broadcast announcements, executive media memos, and live press activations.</p>
         </div>
         <div class="exp-details-block">
           <h3 class="exp-org-title">We Love Leimert</h3>
-          <p class="exp-role-meta">Digital Storytelling Intern | Los Angeles, CA</p>
-          <p class="exp-desc">Mapped local commercial landmarks and conducted field interviews across Leimert Park to compile oral histories for community platforms.</p>
+          <p class="exp-role-meta">Community Partner Intern | September 2025 – December 2025</p>
+          <ul class="exp-bullets">
+            <li>Created and edited social media carousels, short-form video content, and digital storytelling assets using Adobe Premiere Pro, Photoshop, Canva, original photography, and curated social media imagery while maintaining the organization's brand voice and documenting community history.</li>
+            <li>Independently conducted research and interviews with business owners, residents, and artists by gathering narratives to expand digital archives.</li>
+            <li>Organized and mapped data for local Black-owned businesses and cultural landmarks by collecting information and structuring it into a digital companion platform.</li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <!-- Tab 02 Content -->
     <div class="exp-content-grid">
       <div class="exp-image-frame">[ Research & Writing Photo ]</div>
       <div>
         <div class="exp-details-block">
-          <h3 class="exp-org-title">Her Campus Media</h3>
-          <p class="exp-role-meta">Feature Writer & Journalist | UCLA</p>
-          <p class="exp-desc">Researched, pitched, and wrote published feature stories focusing on campus culture, entertainment media, and student perspectives.</p>
+          <h3 class="exp-org-title">Her Campus Media at UCLA</h3>
+          <p class="exp-role-meta">Feature Writer | September 2025 – Present</p>
+          <ul class="exp-bullets">
+            <li>Reporting on and writing weekly feature stories on campus life and culture by monitoring trends, producing engaging content for a diverse student audience.</li>
+            <li>Researching, conducting interviews, and applying SEO optimization to increase article visibility, resulting in a 7% increase in digital readership.</li>
+            <li>Communicating with section editors throughout drafting and revisions to strengthen article clarity, structure, and storytelling.</li>
+          </ul>
         </div>
         <div class="exp-details-block">
-          <h3 class="exp-org-title">Non-Profit Grant Proposals</h3>
-          <p class="exp-role-meta">Grant & Program Copywriter</p>
-          <p class="exp-desc">Authored grant proposals, program descriptions, and evaluation metrics for youth literacy and conservation non-profit organizations.</p>
+          <h3 class="exp-org-title">Reading On The Pitch (ROTP)</h3>
+          <p class="exp-role-meta">Research and Grant Writing Volunteer | January 2026 – April 2026</p>
+          <ul class="exp-bullets">
+            <li>Conducted research and planning to support fundraising and program development for Reading on the Pitch.</li>
+            <li>Collaborated on a strategic plan for the FIFA World Cup, mapping match locations, fan zones, and local establishments to identify outreach and fundraising opportunities.</li>
+            <li>Researched destination marketing organizations (DMOs), community partners, and event logistics to inform engagement strategies.</li>
+            <li>Compiled and analyzed information on fan festivals, restaurants, and public gathering spaces near host cities to guide on-site outreach.</li>
+            <li>Wrote a proposal to support the organization’s Sudanese and South Sudanese literacy program in pursuit of funding.</li>
+          </ul>
         </div>
       </div>
     </div>
 
-    <!-- Tab 03 Content -->
     <div class="exp-content-grid">
       <div class="exp-image-frame">[ Leadership Photo ]</div>
       <div>
         <div class="exp-details-block">
           <h3 class="exp-org-title">Changeist</h3>
-          <p class="exp-role-meta">Team Leader Mentorship Intern | Los Angeles, CA</p>
-          <p class="exp-desc">Facilitated youth workshops on environmental justice and public health, guiding middle school participants through hands-on service learning projects.</p>
+          <p class="exp-role-meta">Team Leader Intern | September 2025 – July 2026</p>
+          <ul class="exp-bullets">
+            <li>Constructed guides and activity plans for youth civic activists, fostering an environment for community engagement.</li>
+            <li>Facilitated group discussions on topics such as environmental justice, public and mental health, and immigrant justice to teach and instill motivation among youth ages 11-14.</li>
+            <li>Partnered with organizations throughout LA County by communicating and building rapport with leaders to secure students’ opportunities for civic engagement.</li>
+          </ul>
         </div>
         <div class="exp-details-block">
           <h3 class="exp-org-title">Kappa Delta Sorority</h3>
-          <p class="exp-role-meta">Health & Wellness Director | UCLA</p>
-          <p class="exp-desc">Managed community wellness programming, authored proposals, and structured weekly communications for over 300 members.</p>
+          <p class="exp-role-meta">Health and Wellness Director, DEI Committee | September 2023 – June 2025</p>
+          <ul class="exp-bullets">
+            <li>Wrote weekly newsletters for 300+ members by researching health topics, ensuring all wellness content and updates were accurate and consistent.</li>
+            <li>Developed program proposals by outlining wellness initiatives and designing actionable events to support chapter programming.</li>
+            <li>Communicated with chapter leadership and members to coordinate wellness programs aligned with organizational needs.</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -711,7 +815,6 @@
     </div>
   </section>
 
-  <!-- Section 4: Beyond the Classroom -->
   <section class="beyond-section fade-in-up" id="beyond">
     <span class="section-label" style="text-align: center;">Interests & Involvement</span>
     <h2 style="font-family: var(--font-serif); font-size: 3rem; font-style: italic; text-align: center; margin-top: 0.5rem;">Beyond the Classroom</h2>
@@ -730,7 +833,6 @@
     </div>
   </section>
 
-  <!-- Section 5: Things I've Worked On -->
   <section class="worked-section fade-in-up" id="worked-on">
     <span class="section-label">Projects</span>
     <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-style: italic; margin-top: 0.5rem;">Things I've Worked On</h2>
@@ -751,7 +853,6 @@
     </div>
   </section>
 
-  <!-- Section 6: Get in Touch -->
   <section class="contact-section fade-in-up" id="contact">
     <div class="contact-title-wrap">
       <span class="contact-title-script">get in</span>
@@ -759,27 +860,24 @@
     </div>
 
     <div class="contact-links-stack">
-      <a href="mailto:samdurst@g.ucla.edu" class="contact-arrow-link">→ samdurst@g.ucla.edu</a>
-      <a href="tel:6196695180" class="contact-arrow-link">→ (619) 669-5180</a>
-      <a href="https://www.linkedin.com" target="_blank" rel="noopener" class="contact-arrow-link">→ LinkedIn</a>
+      <a href="mailto:samdurst@g.ucla.edu" class="contact-arrow-link">&rarr; samdurst@g.ucla.edu</a>
+      <a href="tel:6196695180" class="contact-arrow-link">&rarr; (619) 669-5180</a>
+      <a href="https://www.linkedin.com/in/samantha-durst/" target="_blank" rel="noopener" class="contact-arrow-link">&rarr; LinkedIn</a>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <div>© 2026 Samantha Durst</div>
     <div>UCLA • Los Angeles</div>
   </footer>
 
-  <!-- INTERACTIVE JS FOR TABS AND SCROLL FLOW ANIMATIONS -->
   <script>
-    // Tab switching functionality
     function switchExpTab(index) {
-      const tabItems = document.querySelectorAll('.exp-tab-item');
+      const headerTabs = document.querySelectorAll('.exp-tab-item');
       const contentGrids = document.querySelectorAll('.exp-content-grid');
       const circleBtns = document.querySelectorAll('.circle-btn');
 
-      tabItems.forEach((tab, i) => {
+      headerTabs.forEach((tab, i) => {
         tab.classList.toggle('active', i === index);
       });
 
@@ -792,23 +890,22 @@
       });
     }
 
-    // Intersection Observer for Scroll Fade-in Animations
     document.addEventListener('DOMContentLoaded', () => {
       const observerOptions = {
-        root: null,
-        threshold: 0.15
+        threshold: 0.12
       };
 
-      const observer = new IntersectionObserver((entries, obs) => {
+      const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
-            obs.unobserve(entry.target);
           }
         });
       }, observerOptions);
 
-      document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
+      document.querySelectorAll('.fade-in-up').forEach(el => {
+        observer.observe(el);
+      });
     });
   </script>
 </body>

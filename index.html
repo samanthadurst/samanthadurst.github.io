@@ -4,24 +4,19 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Samantha Durst | Portfolio</title>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
   <style>
     /* DESIGN SYSTEM & COLOR VARIABLES */
     :root {
       --bg-white: #FFFFFF;
-      --pastel-azure: #cad4db; 
+      --pastel-azure: #cad4db;
       --pastel-orange: #dbc7ab;
-      
       --text-dark: #111111;
       --text-muted: #4A4A4A;
       --text-light: #777777;
-
       --border-subtle: rgba(0, 0, 0, 0.08);
-
       --font-serif: 'Playfair Display', Georgia, serif;
       --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
     }
@@ -288,11 +283,11 @@
       margin-bottom: 1.25rem;
     }
 
-    .edu-item, .pub-item {
+    .edu-item {
       margin-bottom: 2rem;
     }
 
-    .edu-title, .pub-title {
+    .edu-title {
       font-family: var(--font-serif);
       font-size: 1.4rem;
       font-style: italic;
@@ -300,10 +295,60 @@
       margin-bottom: 0.25rem;
     }
 
-    .edu-sub, .pub-sub {
+    .edu-sub {
       font-size: 0.85rem;
       color: var(--text-muted);
       margin-bottom: 0.5rem;
+    }
+
+    /* REDESIGNED PUBLICATIONS TABLE SECTION */
+    .publications-header-title {
+      font-family: var(--font-serif);
+      font-size: 2.5rem;
+      font-style: italic;
+      margin-bottom: 2rem;
+      color: var(--text-dark);
+    }
+
+    .pub-table-wrapper {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1rem;
+    }
+
+    .pub-table-wrapper th {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      text-align: left;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .pub-table-wrapper td {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border-subtle);
+      font-size: 0.9rem;
+      vertical-align: top;
+    }
+
+    .pub-table-wrapper .col-year {
+      width: 15%;
+      color: var(--text-dark);
+      font-weight: 500;
+    }
+
+    .pub-table-wrapper .col-title {
+      width: 55%;
+      color: var(--text-dark);
+      padding-right: 1.5rem;
+    }
+
+    .pub-table-wrapper .col-publisher {
+      width: 30%;
+      color: var(--text-muted);
     }
 
     .author-star-box {
@@ -412,32 +457,38 @@
     }
 
     .exp-details-block {
-      margin-bottom: 2.5rem;
+      margin-bottom: 2rem;
     }
 
     .exp-org-title {
       font-family: var(--font-serif);
-      font-size: 1.8rem;
+      font-size: 1.4rem;
       font-style: italic;
-      margin-bottom: 0.25rem;
+      margin-bottom: 0.2rem;
     }
 
     .exp-role-meta {
-      font-size: 0.85rem;
+      font-size: 0.8rem;
       color: var(--text-light);
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.6rem;
+    }
+
+    .exp-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.6;
     }
 
     .exp-bullets {
       list-style-type: disc;
-      padding-left: 1.2rem;
-      font-size: 0.95rem;
+      padding-left: 1.1rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
     .exp-bullets li {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.4rem;
     }
 
     .exp-circle-nav {
@@ -479,42 +530,47 @@
 
     .beyond-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 3.5rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
       margin-top: 3rem;
     }
 
     .beyond-card {
       background: #FFFFFF;
-      padding: 2rem;
+      padding: 1.5rem;
       border-radius: 4px;
       box-shadow: 0 4px 20px rgba(0,0,0,0.03);
+      display: flex;
+      flex-direction: column;
     }
 
     .beyond-card-img {
       width: 100%;
-      height: 300px;
+      height: 220px;
       background: #EAEAEA;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--text-light);
-      font-size: 0.85rem;
+      margin-bottom: 1.25rem;
       border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .beyond-card-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .beyond-card h3 {
       font-family: var(--font-serif);
-      font-size: 1.6rem;
+      font-size: 1.3rem;
       font-style: italic;
       margin-bottom: 0.5rem;
     }
 
     .beyond-card p {
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
-      line-height: 1.7;
+      line-height: 1.6;
     }
 
     /* 5. THINGS I'VE WORKED ON */
@@ -644,12 +700,10 @@
         <img src="headshot.png" alt="Samantha Durst">
       </div>
     </div>
-    
     <div class="hero-right-content fade-in-up">
       <span class="hero-subheading">WELCOME TO MY PORTFOLIO</span>
       <h1 class="hero-title">Samantha Durst</h1>
       <p class="hero-desc">Aspiring Public Relations Strategist, Social Impact Leader & Entertainment Professional at UCLA</p>
-      
       <a href="https://www.linkedin.com/in/samantha-durst-/" target="_blank" rel="noopener" class="linkedin-hero-link">
         LinkedIn <span class="arrow">&rarr;</span>
       </a>
@@ -663,8 +717,8 @@
         [ Sticky Panel Photo ]
       </div>
     </div>
-
     <div class="right-scroll-panel">
+      
       <div class="scroll-block fade-in-up">
         <span class="section-label">About</span>
         <div class="bio-text">
@@ -684,52 +738,65 @@
       </div>
 
       <div class="scroll-block fade-in-up" id="publications">
-        <span class="section-label">Publications</span>
-
-        <div class="pub-item">
-          <h3 class="pub-title">The Last of the Bugs Heard it First: Noah Kahan’s The Great Divide Was Worth the Wait</h3>
-          <p class="pub-sub">2026 · Her Campus Media at UCLA</p>
-        </div>
-
-        <div class="pub-item">
-          <h3 class="pub-title">10 Ways to Make a Difference Ahead of Earth Day in Los Angeles</h3>
-          <p class="pub-sub">2026 · Her Campus Media at UCLA</p>
-        </div>
-
-        <div class="pub-item">
-          <h3 class="pub-title">Throne of Glass Walked So ACOTAR Could Run</h3>
-          <p class="pub-sub">2026 · Her Campus Media at UCLA</p>
-        </div>
-
-        <div class="pub-item">
-          <h3 class="pub-title">The FIFA World Cup Is Coming to LA: Here’s What You Need to Know</h3>
-          <p class="pub-sub">2026 · Her Campus Media at UCLA</p>
-        </div>
-
-        <div class="pub-item">
-          <h3 class="pub-title">Friends First: The Rise of Platonic Shipping</h3>
-          <p class="pub-sub">2026 · Her Campus Media at UCLA</p>
-        </div>
-
-        <div class="pub-item">
-          <h3 class="pub-title">My Takeaways From a Press Conference With Asha Banks</h3>
-          <p class="pub-sub">February 2, 2026 · Her Campus Media at UCLA</p>
-        </div>
-
-        <div class="pub-item">
-          <h3 class="pub-title">Creating Change in Los Angeles: How College Students Can Empower Communities in Need</h3>
-          <p class="pub-sub">November 13, 2025 · Her Campus Media at UCLA</p>
-        </div>
+        <span class="section-label">RECOGNITION</span>
+        <h2 class="publications-header-title">Publications</h2>
+        
+        <table class="pub-table-wrapper">
+          <thead>
+            <tr>
+              <th class="col-year">YEAR</th>
+              <th class="col-title">TITLE</th>
+              <th class="col-publisher">PUBLISHER</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-year">2026</td>
+              <td class="col-title">The Last of the Bugs Heard it First: Noah Kahan’s The Great Divide Was Worth the Wait</td>
+              <td class="col-publisher">Her Campus Media at UCLA</td>
+            </tr>
+            <tr>
+              <td class="col-year">2026</td>
+              <td class="col-title">10 Ways to Make a Difference Ahead of Earth Day in Los Angeles</td>
+              <td class="col-publisher">Her Campus Media at UCLA</td>
+            </tr>
+            <tr>
+              <td class="col-year">2026</td>
+              <td class="col-title">Throne of Glass Walked So ACOTAR Could Run</td>
+              <td class="col-publisher">Her Campus Media at UCLA</td>
+            </tr>
+            <tr>
+              <td class="col-year">2026</td>
+              <td class="col-title">The FIFA World Cup Is Coming to LA: Here’s What You Need to Know</td>
+              <td class="col-publisher">Her Campus Media at UCLA</td>
+            </tr>
+            <tr>
+              <td class="col-year">2026</td>
+              <td class="col-title">Friends First: The Rise of Platonic Shipping</td>
+              <td class="col-publisher">Her Campus Media at UCLA</td>
+            </tr>
+            <tr>
+              <td class="col-year">2026</td>
+              <td class="col-title">My Takeaways From a Press Conference With Asha Banks</td>
+              <td class="col-publisher">Her Campus Media at UCLA</td>
+            </tr>
+            <tr>
+              <td class="col-year">2025</td>
+              <td class="col-title">Creating Change in Los Angeles: How College Students Can Empower Communities in Need</td>
+              <td class="col-publisher">Her Campus Media at UCLA</td>
+            </tr>
+          </tbody>
+        </table>
 
         <a href="https://www.hercampus.com/author/samantha-durst/" target="_blank" rel="noopener" class="author-star-box">
           <span class="star-icon">★</span> author archive &rarr;
         </a>
       </div>
+
     </div>
   </section>
 
   <section class="experience-section fade-in-up" id="experience">
-    
     <div class="exp-header-box">
       <h2>Experience</h2>
     </div>
@@ -788,7 +855,6 @@
             <li>Conducted research and planning to support fundraising and program development for Reading on the Pitch.</li>
             <li>Collaborated on a strategic plan for the FIFA World Cup, mapping match locations, fan zones, and local establishments to identify outreach and fundraising opportunities.</li>
             <li>Researched destination marketing organizations (DMOs), community partners, and event logistics to inform engagement strategies.</li>
-            <li>Compiled and analyzed information on fan festivals, restaurants, and public gathering spaces near host cities to guide on-site outreach.</li>
             <li>Wrote a proposal to support the organization’s Sudanese and South Sudanese literacy program in pursuit of funding.</li>
           </ul>
         </div>
@@ -829,25 +895,39 @@
   <section class="beyond-section fade-in-up" id="beyond">
     <span class="section-label" style="text-align: center;">Interests & Involvement</span>
     <h2 style="font-family: var(--font-serif); font-size: 3rem; font-style: italic; text-align: center; margin-top: 0.5rem;">Beyond the Classroom</h2>
-
+    
     <div class="beyond-grid">
+      
       <div class="beyond-card">
-        <div class="beyond-card-img">[ Community Activity Photo ]</div>
-        <h3>Youth Literacy & Athletics</h3>
-        <p>Volunteering with initiatives like Reading on the Pitch to combine sports, youth mentorship, and educational equity programs.</p>
+        <div class="beyond-card-img">
+          <img src="SpecialOlympics.png" alt="BruinsVote UCLA">
+        </div>
+        <h3>BruinsVote UCLA</h3>
+        <p>UCLA's student-led voter + civic engagement coalition, where we develop educational content on civic engagement, including voter guides and outreach materials.</p>
       </div>
+
       <div class="beyond-card">
-        <div class="beyond-card-img">[ Creative Project Photo ]</div>
-        <h3>Creative Writing & Arts</h3>
-        <p>Exploring creative prose, canvas painting, digital storytelling, and multi-layered media production.</p>
+        <div class="beyond-card-img">
+          <img src="SpecialO.png" alt="Special Olympics at UCLA">
+        </div>
+        <h3>Special Olympics at UCLA</h3>
+        <p>Coach adults with special needs in a variety of sports every Saturday. On the Event Planning Committee, we build fundraising campaigns and event materials, for example the fundraising event shown in photo.</p>
       </div>
+
+      <div class="beyond-card">
+        <div class="beyond-card-img">
+          <img src="ScrubJay.png" alt="Customer Service">
+        </div>
+        <h3>Customer Service</h3>
+        <p>I have worked in customer service for five years, and currently serve as a Barista at Australian-inspired coffee shop Bluestone Lane.</p>
+      </div>
+
     </div>
   </section>
 
   <section class="worked-section fade-in-up" id="worked-on">
     <span class="section-label">Projects</span>
     <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-style: italic; margin-top: 0.5rem;">Things I've Worked On</h2>
-
     <div class="worked-grid">
       <div class="worked-card">
         <h3>Media Pitching Campaign</h3>
@@ -869,11 +949,9 @@
       <span class="contact-title-script">get in</span>
       <span class="contact-title-bold">TOUCH</span>
     </div>
-
     <div class="contact-links-stack">
       <a href="mailto:samdurst@g.ucla.edu" class="contact-arrow-link">&rarr; samdurst@g.ucla.edu</a>
       <a href="tel:6196695180" class="contact-arrow-link">&rarr; (619) 669-5180</a>
-      
       <a href="https://www.linkedin.com/in/samantha-durst-/" target="_blank" rel="noopener" class="contact-arrow-link">&rarr; LinkedIn</a>
     </div>
   </section>
@@ -892,21 +970,16 @@
       headerTabs.forEach((tab, i) => {
         tab.classList.toggle('active', i === index);
       });
-
       contentGrids.forEach((grid, i) => {
         grid.classList.toggle('active', i === index);
       });
-
       circleBtns.forEach((btn, i) => {
         btn.classList.toggle('active', i === index);
       });
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      const observerOptions = {
-        threshold: 0.12
-      };
-
+      const observerOptions = { threshold: 0.12 };
       const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {

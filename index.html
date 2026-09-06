@@ -13,7 +13,7 @@
     /* DESIGN SYSTEM & COLOR VARIABLES */
     :root {
       --bg-white: #FFFFFF;
-      --pastel-azure: #cad4db; /* Updated Light Azure */
+      --pastel-azure: #cad4db; 
       --pastel-orange: #dbc7ab;
       
       --text-dark: #111111;
@@ -104,22 +104,30 @@
       color: var(--text-dark);
     }
 
-    /* 1. HERO SECTION */
+    /* 1. HERO SECTION (Layout Adjusted to 50/50 Grid & Centered Text) */
     .hero-section {
       height: 100vh;
       width: 100%;
       background-color: var(--pastel-azure);
-      display: flex;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
       align-items: center;
-      justify-content: space-between;
-      padding: 0 8%;
+      padding: 0 6%;
       position: relative;
     }
 
-    /* Enlarged Title Page Photo */
+    .hero-left-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+
+    /* Enlarged Photo Frame reaching near 50% width threshold */
     .hero-left-photo {
-      width: 380px;
-      height: 500px;
+      width: 88%;
+      max-width: 520px;
+      height: 72vh;
       background: rgba(255, 255, 255, 0.4);
       border: 1px solid rgba(0, 0, 0, 0.1);
       display: flex;
@@ -133,19 +141,24 @@
     }
 
     .hero-right-content {
-      flex: 1;
-      margin-left: 5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 2rem;
     }
 
+    /* Updated Subheading Color to White */
     .hero-subheading {
       font-size: 0.85rem;
       font-weight: 700;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--pastel-orange);
+      color: #FFFFFF;
       margin-bottom: 1rem;
       display: block;
-      text-shadow: 0px 1px 2px rgba(0,0,0,0.15);
+      text-shadow: 0px 1px 2px rgba(0,0,0,0.1);
     }
 
     .hero-title {
@@ -162,25 +175,33 @@
       font-size: 1.1rem;
       letter-spacing: 0.05em;
       color: var(--text-muted);
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      max-width: 90%;
     }
 
-    /* Light Azure LinkedIn Link & Arrow */
+    /* Updated LinkedIn Button to Pastel Orange with Dark Text */
     .linkedin-hero-link {
-      color: var(--pastel-azure);
+      color: var(--text-dark);
       font-weight: 600;
       text-decoration: none;
-      font-size: 1rem;
+      font-size: 0.95rem;
       display: inline-flex;
       align-items: center;
-      gap: 0.3rem;
-      background: rgba(255, 255, 255, 0.8);
-      padding: 0.5rem 1rem;
+      gap: 0.4rem;
+      background-color: var(--pastel-orange);
+      padding: 0.75rem 1.6rem;
       border-radius: 4px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+
+    .linkedin-hero-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 14px rgba(0,0,0,0.1);
     }
 
     .linkedin-hero-link .arrow {
-      color: var(--pastel-azure);
+      color: var(--text-dark);
     }
 
     .hero-scroll-indicator {
@@ -282,7 +303,6 @@
       margin-bottom: 0.5rem;
     }
 
-    /* Star Shaped Author Link Button */
     .author-star-box {
       margin-top: 2rem;
       display: inline-block;
@@ -591,9 +611,8 @@
     /* RESPONSIVE DESIGN */
     @media (max-width: 900px) {
       nav { padding: 1rem 2rem; }
-      .hero-section { flex-direction: column; justify-content: center; height: auto; padding: 8rem 2rem 5rem; }
-      .hero-left-photo { width: 100%; height: 320px; margin-bottom: 2rem; }
-      .hero-right-content { margin-left: 0; text-align: center; }
+      .hero-section { grid-template-columns: 1fr; height: auto; padding: 8rem 2rem 5rem; }
+      .hero-left-photo { width: 100%; height: 360px; margin-bottom: 2rem; }
       .hero-title { font-size: 3.2rem; }
       .split-section { flex-direction: column; }
       .left-sticky-panel { height: 300px; position: relative; }
@@ -617,14 +636,18 @@
   </nav>
 
   <section class="hero-section">
-    <div class="hero-left-photo fade-in-up">
-      [ Larger Title Photo Placeholder ]
+    <div class="hero-left-container fade-in-up">
+      <div class="hero-left-photo">
+        [ Larger Title Photo Placeholder ]
+      </div>
     </div>
+    
     <div class="hero-right-content fade-in-up">
       <span class="hero-subheading">WELCOME TO MY PORTFOLIO</span>
       <h1 class="hero-title">Samantha Durst</h1>
       <p class="hero-desc">Aspiring Public Relations Strategist, Social Impact Leader & Entertainment Professional at UCLA</p>
-      <a href="https://www.linkedin.com/in/samantha-durst/" target="_blank" rel="noopener" class="linkedin-hero-link">
+      
+      <a href="https://www.linkedin.com/in/samantha-durst-/" target="_blank" rel="noopener" class="linkedin-hero-link">
         LinkedIn <span class="arrow">&rarr;</span>
       </a>
     </div>
@@ -862,7 +885,8 @@
     <div class="contact-links-stack">
       <a href="mailto:samdurst@g.ucla.edu" class="contact-arrow-link">&rarr; samdurst@g.ucla.edu</a>
       <a href="tel:6196695180" class="contact-arrow-link">&rarr; (619) 669-5180</a>
-      <a href="https://www.linkedin.com/in/samantha-durst/" target="_blank" rel="noopener" class="contact-arrow-link">&rarr; LinkedIn</a>
+      
+      <a href="https://www.linkedin.com/in/samantha-durst-/" target="_blank" rel="noopener" class="contact-arrow-link">&rarr; LinkedIn</a>
     </div>
   </section>
 

@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Samantha Durst | Portfolio</title>
@@ -123,7 +121,7 @@
       width: 100%;
     }
 
-    /* Enlarged Photo Frame reaching near 50% width threshold */
+    /* Enlarged Photo Frame reaching near 50% width threshold with explicit image clipping */
     .hero-left-photo {
       width: 88%;
       max-width: 520px;
@@ -133,11 +131,17 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      color: var(--text-muted);
-      font-size: 0.85rem;
-      text-align: center;
-      padding: 1rem;
       border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero-left-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
     }
 
     .hero-right-content {
@@ -622,9 +626,7 @@
       .beyond-grid, .worked-grid { grid-template-columns: 1fr; }
       .contact-title-bold { font-size: 3.2rem; }
     }
-  </style>
-</head>
-<body>
+  </style></head><body>
 
   <nav>
     <div class="nav-logo">Samantha Durst</div>
@@ -638,7 +640,7 @@
   <section class="hero-section">
     <div class="hero-left-container fade-in-up">
       <div class="hero-left-photo">
-        [ Larger Title Photo Placeholder ]
+        <img src="headshot.png" alt="Samantha Durst">
       </div>
     </div>
     
@@ -684,57 +686,42 @@
         <span class="section-label">Publications</span>
 
         <div class="pub-item">
-          <h3 class="pub-title">Heard it First: Noah Kahan’s The Great Divide Was Worth the Wait</h3>
+          <h3 class="pub-title">The Last of the Bugs Heard it First: Noah Kahan’s The Great Divide Was Worth the Wait</h3>
           <p class="pub-sub">2026 · Her Campus Media at UCLA</p>
         </div>
 
         <div class="pub-item">
-          <h3 class="pub-title">The Last of the Bugs</h3>
-          <p class="pub-sub">2026 · Her Campus</p>
-        </div>
-
-        <div class="pub-item">
           <h3 class="pub-title">10 Ways to Make a Difference Ahead of Earth Day in Los Angeles</h3>
-          <p class="pub-sub">2026 · Her Campus</p>
+          <p class="pub-sub">2026 · Her Campus Media at UCLA</p>
         </div>
 
         <div class="pub-item">
           <h3 class="pub-title">Throne of Glass Walked So ACOTAR Could Run</h3>
-          <p class="pub-sub">2026 · Her Campus</p>
+          <p class="pub-sub">2026 · Her Campus Media at UCLA</p>
         </div>
 
         <div class="pub-item">
           <h3 class="pub-title">The FIFA World Cup Is Coming to LA: Here’s What You Need to Know</h3>
-          <p class="pub-sub">2026 · Her Campus</p>
+          <p class="pub-sub">2026 · Her Campus Media at UCLA</p>
         </div>
 
         <div class="pub-item">
           <h3 class="pub-title">Friends First: The Rise of Platonic Shipping</h3>
-          <p class="pub-sub">2026 · Her Campus</p>
+          <p class="pub-sub">2026 · Her Campus Media at UCLA</p>
         </div>
 
         <div class="pub-item">
           <h3 class="pub-title">My Takeaways From a Press Conference With Asha Banks</h3>
-          <p class="pub-sub">February 2, 2026 · Her Campus</p>
+          <p class="pub-sub">February 2, 2026 · Her Campus Media at UCLA</p>
         </div>
 
         <div class="pub-item">
           <h3 class="pub-title">Creating Change in Los Angeles: How College Students Can Empower Communities in Need</h3>
-          <p class="pub-sub">November 13, 2025 · Her Campus</p>
-        </div>
-
-        <div class="pub-item">
-          <h3 class="pub-title">From Phone Calls to Weekend Visits: Surviving and Thriving in a College Long Distance Relationship</h3>
-          <p class="pub-sub">October 30, 2025 · Her Campus</p>
-        </div>
-
-        <div class="pub-item">
-          <h3 class="pub-title">Visibly Invisible</h3>
-          <p class="pub-sub">National High School Poetry Contest, Live Poet’s Society of New Jersey · 2023 (Top 50 American High School Poet’s Published Poetry)</p>
+          <p class="pub-sub">November 13, 2025 · Her Campus Media at UCLA</p>
         </div>
 
         <a href="https://www.hercampus.com/author/samantha-durst/" target="_blank" rel="noopener" class="author-star-box">
-          <span class="star-icon">★</span> Read Author Archive &rarr;
+          <span class="star-icon">★</span> author archive &rarr;
         </a>
       </div>
     </div>
@@ -931,6 +918,4 @@
         observer.observe(el);
       });
     });
-  </script>
-</body>
-</html>
+  </script></body></html>

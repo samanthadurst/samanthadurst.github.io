@@ -301,7 +301,7 @@
       margin-bottom: 0.5rem;
     }
 
-    /* REDESIGNED PUBLICATIONS TABLE SECTION */
+    /* PUBLICATIONS TABLE SECTION */
     .publications-header-title {
       font-family: var(--font-serif);
       font-size: 2.5rem;
@@ -444,9 +444,12 @@
       display: grid;
     }
 
+    /* UPDATED FRAME DIMENSIONS FOR PORTRAIT PHOTOS */
     .exp-image-frame {
-      width: 100%;
-      height: 600px;
+      width: 80%;           /* Reduces width */
+      max-width: 380px;     /* Limits horizontal expansion */
+      height: 680px;        /* Increases physical vertical length */
+      margin: 0 auto;       /* Centers frame inside its column */
       background: #F2F2F2;
       display: flex;
       align-items: center;
@@ -460,7 +463,7 @@
     .exp-image-frame img {
       width: 100%;
       height: 100%;
-      object-fit: contain;
+      object-fit: cover;    /* Fills the full frame smoothly */
       display: block;
     }
 
@@ -686,7 +689,7 @@
       .right-scroll-panel { padding: 3rem 1.5rem; }
       .exp-tabs-header { grid-template-columns: 1fr; }
       .exp-content-grid { grid-template-columns: 1fr; }
-      .exp-image-frame { height: 400px; }
+      .exp-image-frame { width: 100%; max-width: 100%; height: 500px; }
       .beyond-grid, .worked-grid { grid-template-columns: 1fr; }
       .contact-title-bold { font-size: 3.2rem; }
     }

@@ -414,7 +414,8 @@
       opacity: 0.85;
     }
 
-    .exp-tab-item:hover, .exp-tab-item.active {
+    .exp-tab-item:hover,
+    .exp-tab-item.active {
       opacity: 1;
       transform: translateY(-3px);
       box-shadow: 0 6px 20px rgba(0,0,0,0.06);
@@ -533,7 +534,8 @@
       opacity: 0.7;
     }
 
-    .circle-btn.active, .circle-btn:hover {
+    .circle-btn.active,
+    .circle-btn:hover {
       opacity: 1;
       transform: scale(1.08);
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
@@ -593,35 +595,98 @@
 
     /* 5. THINGS I'VE WORKED ON */
     .worked-section {
-      padding: 6rem 8%;
-      background: var(--bg-white);
+      padding: 5.5rem 8% 6.5rem;
+      background: #FFFFFF;
       border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .worked-section-header {
+      text-align: center;
+      padding-bottom: 3.5rem;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .worked-section-header h2 {
+      font-family: var(--font-serif);
+      font-size: 2.8rem;
+      font-style: italic;
+      font-weight: 400;
+      color: var(--text-dark);
     }
 
     .worked-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 2rem;
-      margin-top: 3rem;
+      max-width: 1180px;
+      margin: 3.5rem auto 0;
     }
 
     .worked-card {
-      padding: 2.2rem;
-      border: 1px solid var(--border-subtle);
-      background: rgba(202, 212, 219, 0.15);
-      border-radius: 4px;
+      min-height: 325px;
+      padding: 2.3rem 2rem 2rem;
+      background: #FFFFFF;
+      border: 1px solid rgba(0,0,0,0.04);
+      border-radius: 6px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .worked-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+    }
+
+    .worked-card-icon {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #111111;
+      color: #FFFFFF;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      margin-bottom: 1.8rem;
     }
 
     .worked-card h3 {
       font-family: var(--font-serif);
-      font-size: 1.4rem;
-      font-style: italic;
-      margin-bottom: 0.5rem;
+      font-size: 1.28rem;
+      font-style: normal;
+      font-weight: 400;
+      line-height: 1.3;
+      margin-bottom: 1rem;
     }
 
     .worked-card p {
-      font-size: 0.9rem;
+      font-size: 0.84rem;
       color: var(--text-muted);
+      line-height: 1.6;
+      max-width: 290px;
+      margin-bottom: 1.8rem;
+    }
+
+    .worked-card-link {
+      margin-top: auto;
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding-bottom: 0.2rem;
+      border-bottom: 1px solid rgba(0,0,0,0.2);
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .worked-card-link:hover {
+      color: var(--text-dark);
+      border-color: var(--text-dark);
     }
 
     /* 6. GET IN TOUCH */
@@ -687,25 +752,71 @@
 
     /* RESPONSIVE DESIGN */
     @media (max-width: 900px) {
-      nav { padding: 1rem 2rem; }
-      .hero-section { grid-template-columns: 1fr; height: auto; padding: 8rem 2rem 5rem; }
-      .hero-left-photo { width: 100%; height: 360px; margin-bottom: 2rem; }
-      .hero-title { font-size: 3.2rem; }
-      .split-section { flex-direction: column; }
-      .left-sticky-panel { height: 300px; position: relative; }
-      .right-scroll-panel { padding: 3rem 1.5rem; }
-      .exp-tabs-header { grid-template-columns: 1fr; }
-      .exp-content-grid { grid-template-columns: 1fr; gap: 2rem; }
-      .exp-image-frame { width: 100%; max-width: 340px; height: auto; }
-      .beyond-grid, .worked-grid { grid-template-columns: 1fr; }
-      .contact-title-bold { font-size: 3.2rem; }
+      nav {
+        padding: 1rem 2rem;
+      }
+
+      .hero-section {
+        grid-template-columns: 1fr;
+        height: auto;
+        padding: 8rem 2rem 5rem;
+      }
+
+      .hero-left-photo {
+        width: 100%;
+        height: 360px;
+        margin-bottom: 2rem;
+      }
+
+      .hero-title {
+        font-size: 3.2rem;
+      }
+
+      .split-section {
+        flex-direction: column;
+      }
+
+      .left-sticky-panel {
+        height: 300px;
+        position: relative;
+      }
+
+      .right-scroll-panel {
+        padding: 3rem 1.5rem;
+      }
+
+      .exp-tabs-header {
+        grid-template-columns: 1fr;
+      }
+
+      .exp-content-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .exp-image-frame {
+        width: 100%;
+        max-width: 340px;
+        height: auto;
+      }
+
+      .beyond-grid,
+      .worked-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-title-bold {
+        font-size: 3.2rem;
+      }
     }
   </style>
 </head>
+
 <body>
 
   <nav>
     <div class="nav-logo">Samantha Durst</div>
+
     <ul class="nav-links">
       <li><a href="#about">About</a></li>
       <li><a href="#experience">Experience</a></li>
@@ -713,53 +824,85 @@
     </ul>
   </nav>
 
+  <!-- 1. HERO -->
   <section class="hero-section">
+
     <div class="hero-left-container fade-in-up">
       <div class="hero-left-photo">
         <img src="headshot.png" alt="Samantha Durst">
       </div>
     </div>
+
     <div class="hero-right-content fade-in-up">
       <span class="hero-subheading">WELCOME TO MY PORTFOLIO</span>
+
       <h1 class="hero-title">Samantha Durst</h1>
-      <p class="hero-desc">Aspiring Public Relations Strategist, Social Impact Leader & Entertainment Professional at UCLA</p>
+
+      <p class="hero-desc">
+        Aspiring Public Relations Strategist, Social Impact Leader & Entertainment Professional at UCLA
+      </p>
+
       <a href="https://www.linkedin.com/in/samantha-durst-/" target="_blank" rel="noopener" class="linkedin-hero-link">
         LinkedIn <span class="arrow">&rarr;</span>
       </a>
     </div>
+
     <div class="hero-scroll-indicator">scroll ↓</div>
   </section>
 
+
+  <!-- 2. ABOUT / EDUCATION / PUBLICATIONS -->
   <section class="split-section" id="about">
+
     <div class="left-sticky-panel">
       <div class="sticky-photo-frame">
         [ Sticky Panel Photo ]
       </div>
     </div>
+
     <div class="right-scroll-panel">
-      
+
       <div class="scroll-block fade-in-up">
         <span class="section-label">About</span>
+
         <div class="bio-text">
-          <p>I want to tell stories that bring attention to voices and communities that are often overlooked.</p>
-          <p>I’m interested in journalism, entertainment media, and public relations. Across these fields, I’m drawn to storytelling that centers lived experience and builds meaningful connections between media and the communities it represents. My interest in writing started with poetry. Growing up, I became increasingly aware of social inequalities around me but didn’t always know how to respond. Writing gave me a way to process those experiences and think more deeply about identity and human rights.</p>
-          <p>Today, I write as a Feature Writer for Her Campus Media at UCLA, where I contribute stories that engage readers and explore culture and community. I’m especially interested in journalism that highlights underserved communities and accurately represents their lived experiences. Through my studies, volunteer work, and writing, I’ve developed strong communication skills and an ability to build trust with the people whose stories I tell. Alongside this, I'm passionate about entertainment media and public relations because I enjoy the relationship-building and collaboration behind strong media work. The intersection of media and civic responsibility is exactly where I want to be. Ultimately, I wish to build a career centered on storytelling that informs, connects, and reflects diverse communities.</p>
+          <p>
+            I want to tell stories that bring attention to voices and communities that are often overlooked.
+          </p>
+
+          <p>
+            I’m interested in journalism, entertainment media, and public relations. Across these fields, I’m drawn to storytelling that centers lived experience and builds meaningful connections between media and the communities it represents. My interest in writing started with poetry. Growing up, I became increasingly aware of social inequalities around me but didn’t always know how to respond. Writing gave me a way to process those experiences and think more deeply about identity and human rights.
+          </p>
+
+          <p>
+            Today, I write as a Feature Writer for Her Campus Media at UCLA, where I contribute stories that engage readers and explore culture and community. I’m especially interested in journalism that highlights underserved communities and accurately represents their lived experiences. Through my studies, volunteer work, and writing, I’ve developed strong communication skills and an ability to build trust with the people whose stories I tell. Alongside this, I'm passionate about entertainment media and public relations because I enjoy the relationship-building and collaboration behind strong media work. The intersection of media and civic responsibility is exactly where I want to be. Ultimately, I wish to build a career centered on storytelling that informs, connects, and reflects diverse communities.
+          </p>
         </div>
       </div>
+
 
       <div class="scroll-block fade-in-up" id="education">
         <span class="section-label">Education</span>
+
         <div class="edu-item">
           <h3 class="edu-title">University of California, Los Angeles</h3>
-          <p class="edu-sub">B.A. in English, Minor in Community Engagement & Social Change</p>
-          <p style="font-size: 0.9rem; color: var(--text-muted);">Changemaker Scholar, Bruins Vote Ambassador, Special Olympics Event Planning, & Unified Basketball Volunteer.</p>
+
+          <p class="edu-sub">
+            B.A. in English, Minor in Community Engagement & Social Change
+          </p>
+
+          <p style="font-size: 0.9rem; color: var(--text-muted);">
+            Changemaker Scholar, Bruins Vote Ambassador, Special Olympics Event Planning, & Unified Basketball Volunteer.
+          </p>
         </div>
       </div>
 
+
       <div class="scroll-block fade-in-up" id="publications">
         <span class="section-label">RECOGNITION</span>
+
         <h2 class="publications-header-title">Publications</h2>
-        
+
         <table class="pub-table-wrapper">
           <thead>
             <tr>
@@ -768,231 +911,489 @@
               <th class="col-publisher">PUBLISHER</th>
             </tr>
           </thead>
+
           <tbody>
             <tr>
               <td class="col-year">2026</td>
-              <td class="col-title">The Last of the Bugs Heard it First: Noah Kahan’s The Great Divide Was Worth the Wait</td>
+              <td class="col-title">
+                The Last of the Bugs Heard it First: Noah Kahan’s The Great Divide Was Worth the Wait
+              </td>
               <td class="col-publisher">Her Campus Media at UCLA</td>
             </tr>
+
             <tr>
               <td class="col-year">2026</td>
-              <td class="col-title">10 Ways to Make a Difference Ahead of Earth Day in Los Angeles</td>
+              <td class="col-title">
+                10 Ways to Make a Difference Ahead of Earth Day in Los Angeles
+              </td>
               <td class="col-publisher">Her Campus Media at UCLA</td>
             </tr>
+
             <tr>
               <td class="col-year">2026</td>
-              <td class="col-title">Throne of Glass Walked So ACOTAR Could Run</td>
+              <td class="col-title">
+                Throne of Glass Walked So ACOTAR Could Run
+              </td>
               <td class="col-publisher">Her Campus Media at UCLA</td>
             </tr>
+
             <tr>
               <td class="col-year">2026</td>
-              <td class="col-title">The FIFA World Cup Is Coming to LA: Here’s What You Need to Know</td>
+              <td class="col-title">
+                The FIFA World Cup Is Coming to LA: Here’s What You Need to Know
+              </td>
               <td class="col-publisher">Her Campus Media at UCLA</td>
             </tr>
+
             <tr>
               <td class="col-year">2026</td>
-              <td class="col-title">Friends First: The Rise of Platonic Shipping</td>
+              <td class="col-title">
+                Friends First: The Rise of Platonic Shipping
+              </td>
               <td class="col-publisher">Her Campus Media at UCLA</td>
             </tr>
+
             <tr>
               <td class="col-year">2026</td>
-              <td class="col-title">My Takeaways From a Press Conference With Asha Banks</td>
+              <td class="col-title">
+                My Takeaways From a Press Conference With Asha Banks
+              </td>
               <td class="col-publisher">Her Campus Media at UCLA</td>
             </tr>
+
             <tr>
               <td class="col-year">2025</td>
-              <td class="col-title">Creating Change in Los Angeles: How College Students Can Empower Communities in Need</td>
+              <td class="col-title">
+                Creating Change in Los Angeles: How College Students Can Empower Communities in Need
+              </td>
               <td class="col-publisher">Her Campus Media at UCLA</td>
             </tr>
           </tbody>
         </table>
 
         <a href="https://www.hercampus.com/author/samantha-durst/" target="_blank" rel="noopener" class="author-star-box">
-          <span class="star-icon">★</span> author archive &rarr;
+          <span class="star-icon">★</span> Author Archive &rarr;
         </a>
       </div>
 
     </div>
   </section>
 
+
+  <!-- 3. EXPERIENCE -->
   <section class="experience-section fade-in-up" id="experience">
+
     <div class="exp-header-box">
       <h2>Experience</h2>
     </div>
 
     <div class="exp-tabs-header">
+
       <div class="exp-tab-item active" onclick="switchExpTab(0)">
         <span class="exp-tab-num">01</span>
         <div class="exp-tab-title">Media & Community Relations</div>
       </div>
+
       <div class="exp-tab-item" onclick="switchExpTab(1)">
         <span class="exp-tab-num">02</span>
         <div class="exp-tab-title">Research & Writing</div>
       </div>
+
       <div class="exp-tab-item" onclick="switchExpTab(2)">
         <span class="exp-tab-num">03</span>
         <div class="exp-tab-title">Leadership</div>
       </div>
+
     </div>
 
+
+    <!-- EXPERIENCE TAB 1 -->
     <div class="exp-content-grid active">
+
       <div class="exp-image-frame">
         <img src="BETA26.png" alt="Media & Community Relations Photo">
       </div>
+
       <div>
+
         <div class="exp-details-block">
           <h3 class="exp-org-title">Paramount Skydance Corporation, BET</h3>
-          <p class="exp-role-meta">Corporate Communications & PR Intern | Los Angeles, CA</p>
+
+          <p class="exp-role-meta">
+            Corporate Communications & PR Intern | Los Angeles, CA
+          </p>
+
           <ul class="exp-bullets">
-            <li>Built and maintained a 1,000+ contact media database using MuckRack, researching journalist beats, current coverage, and outlet details to keep the team's outreach accurate and current.</li>
-            <li>Audited the BET media group press tracker line by line against sent announcements, capturing all earned coverage from Q1–Q2 (4/1–6/30) for complete quarterly reporting.</li>
-            <li>Led candidate research and outreach for Get Your Mind Right, BET's new year-round mental health initiative, building a tracker of 100+ athletes, artists, actors, streamers, and mental health professionals to identify and vet potential co-chairs, then tracking outreach to top candidates.</li>
-            <li>Developed the earned media pitch grid for the GYMR launch, identifying and pitching top journalists through Mailchimp and Outlook to secure coverage.</li>
-            <li>Independently produced 8 weekly media and trend reports tracking entertainment news, cultural conversations, and notable campaigns to surface timely content opportunities for the team.</li>
-            <li>Supported on-site press and talent operations across 8+ major activations, including the BET Awards and BET Experience, managing media check-in, credentialing, and red-carpet logistics.</li>
+            <li>
+              Built and maintained a 1,000+ contact media database using MuckRack, researching journalist beats, current coverage, and outlet details to keep the team's outreach accurate and current.
+            </li>
+
+            <li>
+              Audited the BET media group press tracker line by line against sent announcements, capturing all earned coverage from Q1–Q2 (4/1–6/30) for complete quarterly reporting.
+            </li>
+
+            <li>
+              Led candidate research and outreach for Get Your Mind Right, BET's new year-round mental health initiative, building a tracker of 100+ athletes, artists, actors, streamers, and mental health professionals to identify and vet potential co-chairs, then tracking outreach to top candidates.
+            </li>
+
+            <li>
+              Developed the earned media pitch grid for the GYMR launch, identifying and pitching top journalists through Mailchimp and Outlook to secure coverage.
+            </li>
+
+            <li>
+              Independently produced 8 weekly media and trend reports tracking entertainment news, cultural conversations, and notable campaigns to surface timely content opportunities for the team.
+            </li>
+
+            <li>
+              Supported on-site press and talent operations across 8+ major activations, including the BET Awards and BET Experience, managing media check-in, credentialing, and red-carpet logistics.
+            </li>
           </ul>
         </div>
+
+
         <div class="exp-details-block">
           <h3 class="exp-org-title">We Love Leimert</h3>
-          <p class="exp-role-meta">Community Partner Intern | September 2025 – December 2025</p>
+
+          <p class="exp-role-meta">
+            Community Partner Intern | September 2025 – December 2025
+          </p>
+
           <ul class="exp-bullets">
-            <li>Created and edited social media carousels, short-form video content, and digital storytelling assets using Adobe Premiere Pro, Photoshop, Canva, original photography, and curated social media imagery while maintaining the organization's brand voice and documenting community history.</li>
-            <li>Independently conducted research and interviews with business owners, residents, and artists by gathering narratives to expand digital archives.</li>
-            <li>Organized and mapped data for local Black-owned businesses and cultural landmarks by collecting information and structuring it into a digital companion platform.</li>
+            <li>
+              Created and edited social media carousels, short-form video content, and digital storytelling assets using Adobe Premiere Pro, Photoshop, Canva, original photography, and curated social media imagery while maintaining the organization's brand voice and documenting community history.
+            </li>
+
+            <li>
+              Independently conducted research and interviews with business owners, residents, and artists by gathering narratives to expand digital archives.
+            </li>
+
+            <li>
+              Organized and mapped data for local Black-owned businesses and cultural landmarks by collecting information and structuring it into a digital companion platform.
+            </li>
           </ul>
         </div>
+
       </div>
     </div>
 
+
+    <!-- EXPERIENCE TAB 2 -->
     <div class="exp-content-grid">
+
       <div class="exp-image-frame">
         <img src="HerCampus2.png" alt="Research & Writing Photo">
       </div>
+
       <div>
+
         <div class="exp-details-block">
           <h3 class="exp-org-title">Her Campus Media at UCLA</h3>
-          <p class="exp-role-meta">Feature Writer | September 2025 – Present</p>
+
+          <p class="exp-role-meta">
+            Feature Writer | September 2025 – Present
+          </p>
+
           <ul class="exp-bullets">
-            <li>Reporting on and writing weekly feature stories on campus life and culture by monitoring trends, producing engaging content for a diverse student audience.</li>
-            <li>Researching, conducting interviews, and applying SEO optimization to increase article visibility, resulting in a 7% increase in digital readership.</li>
-            <li>Communicating with section editors throughout drafting and revisions to strengthen article clarity, structure, and storytelling.</li>
+            <li>
+              Reporting on and writing weekly feature stories on campus life and culture by monitoring trends, producing engaging content for a diverse student audience.
+            </li>
+
+            <li>
+              Researching, conducting interviews, and applying SEO optimization to increase article visibility, resulting in a 7% increase in digital readership.
+            </li>
+
+            <li>
+              Communicating with section editors throughout drafting and revisions to strengthen article clarity, structure, and storytelling.
+            </li>
           </ul>
         </div>
+
+
         <div class="exp-details-block">
           <h3 class="exp-org-title">Reading On The Pitch (ROTP)</h3>
-          <p class="exp-role-meta">Research and Grant Writing Volunteer | January 2026 – April 2026</p>
+
+          <p class="exp-role-meta">
+            Research and Grant Writing Volunteer | January 2026 – April 2026
+          </p>
+
           <ul class="exp-bullets">
-            <li>Conducted research and planning to support fundraising and program development for Reading on the Pitch.</li>
-            <li>Collaborated on a strategic plan for the FIFA World Cup, mapping match locations, fan zones, and local establishments to identify outreach and fundraising opportunities.</li>
-            <li>Researched destination marketing organizations (DMOs), community partners, and event logistics to inform engagement strategies.</li>
-            <li>Wrote a proposal to support the organization’s Sudanese and South Sudanese literacy program in pursuit of funding.</li>
+            <li>
+              Conducted research and planning to support fundraising and program development for Reading on the Pitch.
+            </li>
+
+            <li>
+              Collaborated on a strategic plan for the FIFA World Cup, mapping match locations, fan zones, and local establishments to identify outreach and fundraising opportunities.
+            </li>
+
+            <li>
+              Researched destination marketing organizations (DMOs), community partners, and event logistics to inform engagement strategies.
+            </li>
+
+            <li>
+              Wrote a proposal to support the organization’s Sudanese and South Sudanese literacy program in pursuit of funding.
+            </li>
           </ul>
         </div>
+
       </div>
     </div>
 
+
+    <!-- EXPERIENCE TAB 3 -->
     <div class="exp-content-grid">
-      <div class="exp-image-frame">[ Leadership Photo ]</div>
+
+      <div class="exp-image-frame">
+        [ Leadership Photo ]
+      </div>
+
       <div>
+
         <div class="exp-details-block">
           <h3 class="exp-org-title">Changeist</h3>
-          <p class="exp-role-meta">Team Leader Intern | September 2025 – July 2026</p>
+
+          <p class="exp-role-meta">
+            Team Leader Intern | September 2025 – July 2026
+          </p>
+
           <ul class="exp-bullets">
-            <li>Constructed guides and activity plans for youth civic activists, fostering an environment for community engagement.</li>
-            <li>Facilitated group discussions on topics such as environmental justice, public and mental health, and immigrant justice to teach and instill motivation among youth ages 11-14.</li>
-            <li>Partnered with organizations throughout LA County by communicating and building rapport with leaders to secure students’ opportunities for civic engagement.</li>
+            <li>
+              Constructed guides and activity plans for youth civic activists, fostering an environment for community engagement.
+            </li>
+
+            <li>
+              Facilitated group discussions on topics such as environmental justice, public and mental health, and immigrant justice to teach and instill motivation among youth ages 11-14.
+            </li>
+
+            <li>
+              Partnered with organizations throughout LA County by communicating and building rapport with leaders to secure students’ opportunities for civic engagement.
+            </li>
           </ul>
         </div>
+
+
         <div class="exp-details-block">
           <h3 class="exp-org-title">Kappa Delta Sorority</h3>
-          <p class="exp-role-meta">Health and Wellness Director, DEI Committee | September 2023 – June 2025</p>
+
+          <p class="exp-role-meta">
+            Health and Wellness Director, DEI Committee | September 2023 – June 2025
+          </p>
+
           <ul class="exp-bullets">
-            <li>Wrote weekly newsletters for 300+ members by researching health topics, ensuring all wellness content and updates were accurate and consistent.</li>
-            <li>Developed program proposals by outlining wellness initiatives and designing actionable events to support chapter programming.</li>
-            <li>Communicated with chapter leadership and members to coordinate wellness programs aligned with organizational needs.</li>
+            <li>
+              Wrote weekly newsletters for 300+ members by researching health topics, ensuring all wellness content and updates were accurate and consistent.
+            </li>
+
+            <li>
+              Developed program proposals by outlining wellness initiatives and designing actionable events to support chapter programming.
+            </li>
+
+            <li>
+              Communicated with chapter leadership and members to coordinate wellness programs aligned with organizational needs.
+            </li>
           </ul>
         </div>
+
       </div>
     </div>
+
 
     <div class="exp-circle-nav">
       <button class="circle-btn active" onclick="switchExpTab(0)">01</button>
       <button class="circle-btn" onclick="switchExpTab(1)">02</button>
       <button class="circle-btn" onclick="switchExpTab(2)">03</button>
     </div>
+
   </section>
 
+
+  <!-- 4. BEYOND THE CLASSROOM -->
   <section class="beyond-section fade-in-up" id="beyond">
-    <span class="section-label" style="text-align: center;">Interests & Involvement</span>
-    <h2 style="font-family: var(--font-serif); font-size: 3rem; font-style: italic; text-align: center; margin-top: 0.5rem;">Beyond the Classroom</h2>
-    
+
+    <span class="section-label" style="text-align: center;">
+      Interests & Involvement
+    </span>
+
+    <h2 style="font-family: var(--font-serif); font-size: 3rem; font-style: italic; text-align: center; margin-top: 0.5rem;">
+      Beyond the Classroom
+    </h2>
+
     <div class="beyond-grid">
-      
+
       <div class="beyond-card">
         <div class="beyond-card-img">
           <img src="SpecialOlympics.png" alt="BruinsVote UCLA">
         </div>
+
         <h3>BruinsVote UCLA</h3>
-        <p>UCLA's student-led voter + civic engagement coalition, where we develop educational content on civic engagement, including voter guides and outreach materials.</p>
+
+        <p>
+          UCLA's student-led voter + civic engagement coalition, where we develop educational content on civic engagement, including voter guides and outreach materials.
+        </p>
       </div>
+
 
       <div class="beyond-card">
         <div class="beyond-card-img">
           <img src="SpecialO.png" alt="Special Olympics at UCLA">
         </div>
+
         <h3>Special Olympics at UCLA</h3>
-        <p>Coach adults with special needs in a variety of sports every Saturday. On the Event Planning Committee, we build fundraising campaigns and event materials, for example the fundraising event shown in photo.</p>
+
+        <p>
+          Coach adults with special needs in a variety of sports every Saturday. On the Event Planning Committee, we build fundraising campaigns and event materials, for example the fundraising event shown in photo.
+        </p>
       </div>
+
 
       <div class="beyond-card">
         <div class="beyond-card-img">
           <img src="ScrubJay.png" alt="Customer Service">
         </div>
+
         <h3>Customer Service</h3>
-        <p>I have worked in customer service for five years, and currently serve as a Barista at Australian-inspired coffee shop Bluestone Lane.</p>
+
+        <p>
+          I have worked in customer service for five years, and currently serve as a Barista at Australian-inspired coffee shop Bluestone Lane.
+        </p>
       </div>
 
     </div>
   </section>
 
+
+  <!-- 5. THINGS I'VE WORKED ON -->
   <section class="worked-section fade-in-up" id="worked-on">
-    <span class="section-label">Projects</span>
-    <h2 style="font-family: var(--font-serif); font-size: 2.8rem; font-style: italic; margin-top: 0.5rem;">Things I've Worked On</h2>
+
+    <div class="worked-section-header">
+      <h2>Things I've Worked On</h2>
+    </div>
+
     <div class="worked-grid">
+
+      <!-- GET YOUR MIND RIGHT -->
       <div class="worked-card">
-        <h3>Media Pitching Campaign</h3>
-        <p>Developed targeted media pitches and press lists for national entertainment activations.</p>
+
+        <div class="worked-card-icon">
+          GYMR
+        </div>
+
+        <h3>
+          Get Your Mind Right
+        </h3>
+
+        <p>
+          A multi-platform mental health initiative designed to inform, inspire, and connect Black communities. The year-round initiative invites communities to nominate the people and places creating hope, healing, and Black joy.
+        </p>
+
+        <a
+          href="https://betgetyourmindright.app/"
+          target="_blank"
+          rel="noopener"
+          class="worked-card-link"
+        >
+          View Website
+        </a>
+
       </div>
+
+
+      <!-- SUNDAY AFTER SIX -->
       <div class="worked-card">
-        <h3>Leimert Park Directory</h3>
-        <p>Compiled commercial landmark directory data for neighborhood digital storytelling platforms.</p>
+
+        <div class="worked-card-icon">
+          PR
+        </div>
+
+        <h3>
+          “Sunday After Six” Press Release
+        </h3>
+
+        <p>
+          BET announcement of comedian Chris “CP” Powell's acclaimed comedy special, “Sunday After Six,” arriving on BET Tuesday, September 1 at 10 PM ET/PT.
+        </p>
+
+        <a
+          href="https://www.paramountpressexpress.com/bet/releases/?view=113158-bet-brings-chris-cp-powells-acclaimed-comedy-special-sunday-after-six-to-screens-september-1"
+          target="_blank"
+          rel="noopener"
+          class="worked-card-link"
+        >
+          View Press Release
+        </a>
+
       </div>
+
+
+      <!-- LEIMERT PARK LEGENDS -->
       <div class="worked-card">
-        <h3>Youth Workshop Series</h3>
-        <p>Designed hands-on learning modules and activity guides on environmental justice.</p>
+
+        <div class="worked-card-icon">
+          LP
+        </div>
+
+        <h3>
+          Leimert Park Legends Campaign
+        </h3>
+
+        <p>
+          A storytelling series that honors the people, places, and creative movements shaping the heart of Leimert Park Village.
+        </p>
+
+        <a
+          href="https://www.weloveleimert.la/"
+          target="_blank"
+          rel="noopener"
+          class="worked-card-link"
+        >
+          View Website
+        </a>
+
       </div>
+
     </div>
   </section>
 
+
+  <!-- 6. GET IN TOUCH -->
   <section class="contact-section fade-in-up" id="contact">
+
     <div class="contact-title-wrap">
       <span class="contact-title-script">get in</span>
       <span class="contact-title-bold">TOUCH</span>
     </div>
+
     <div class="contact-links-stack">
-      <a href="mailto:samdurst@g.ucla.edu" class="contact-arrow-link">&rarr; samdurst@g.ucla.edu</a>
-      <a href="tel:6196695180" class="contact-arrow-link">&rarr; (619) 669-5180</a>
-      <a href="https://www.linkedin.com/in/samantha-durst-/" target="_blank" rel="noopener" class="contact-arrow-link">&rarr; LinkedIn</a>
+
+      <a href="mailto:samdurst@g.ucla.edu" class="contact-arrow-link">
+        &rarr; samdurst@g.ucla.edu
+      </a>
+
+      <a href="tel:6196695180" class="contact-arrow-link">
+        &rarr; (619) 669-5180
+      </a>
+
+      <a
+        href="https://www.linkedin.com/in/samantha-durst-/"
+        target="_blank"
+        rel="noopener"
+        class="contact-arrow-link"
+      >
+        &rarr; LinkedIn
+      </a>
+
     </div>
   </section>
+
 
   <footer>
     <div>© 2026 Samantha Durst</div>
     <div>UCLA • Los Angeles</div>
   </footer>
 
+
   <script>
     function switchExpTab(index) {
+
       const headerTabs = document.querySelectorAll('.exp-tab-item');
       const contentGrids = document.querySelectorAll('.exp-content-grid');
       const circleBtns = document.querySelectorAll('.circle-btn');
@@ -1010,21 +1411,32 @@
       });
     }
 
+
     document.addEventListener('DOMContentLoaded', () => {
-      const observerOptions = { threshold: 0.12 };
+
+      const observerOptions = {
+        threshold: 0.12
+      };
 
       const observer = new IntersectionObserver((entries, observer) => {
+
         entries.forEach(entry => {
+
           if (entry.isIntersecting) {
             entry.target.classList.add('visible');
           }
+
         });
+
       }, observerOptions);
+
 
       document.querySelectorAll('.fade-in-up').forEach(el => {
         observer.observe(el);
       });
+
     });
   </script>
+
 </body>
 </html>
